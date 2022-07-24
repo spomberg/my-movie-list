@@ -1,5 +1,5 @@
 import React from 'react';
-import './navbar.scss';
+import './Navbar.scss';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import HomeIcon from '@mui/icons-material/Home';
@@ -7,6 +7,7 @@ import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import PersonIcon from '@mui/icons-material/Person';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
+import logo from '../../assets/logo.png'
 import { useState } from 'react';
 
 export default function Navbar() {
@@ -18,7 +19,7 @@ export default function Navbar() {
 
     return (
       <div className='navbar'>
-        <h1>My Movie List</h1> 
+        <img src={logo} alt='logo' />
         <Tabs value={value} onChange={handleChange} aria-label="icon label tabs">
           <Tab icon={<HomeIcon />} label="VIEW LISTS" />
           <Tab icon={<FormatListNumberedIcon />} label="MY LISTS" />
