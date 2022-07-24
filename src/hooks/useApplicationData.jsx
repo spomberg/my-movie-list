@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react"
-import axios from "axios";
+import axiosConn from "../axiosConn";
 
 export default function useApplicationData() {
   const [state, setState] = useState({ lists: [] });
 
   useEffect(() => {
-    Promise.resolve(axios.get("/lists"))
+    Promise.resolve(axiosConn.get("/lists"))
     .then(all => {
-      setState(prev => ({ ...prev, lists: all[0].data }));
+      setState(prev => ({ ...prev, lists: all.data }));
     })
   }, []);
 
