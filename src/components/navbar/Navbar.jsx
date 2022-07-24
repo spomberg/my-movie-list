@@ -1,9 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import './navbar.scss';
 
 export default class Navbar extends Component {
   render() {
-    return (
-      <div>Navbar</div>
-    )
+    // return ()
   }
 }
