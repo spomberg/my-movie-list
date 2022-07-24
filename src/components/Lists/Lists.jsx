@@ -10,8 +10,7 @@ export default function Lists(props) {
           <li key={list.id}>
             <ListItem className="list-item"
               title={list.title}
-              created_by={list.created_by}
-              description={list.description}
+              username={list.username}
               image={list.index_poster}
             />
           </li>
