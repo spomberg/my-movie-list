@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './navbar.scss';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
