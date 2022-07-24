@@ -1,0 +1,41 @@
+.index-list-item {
+  display: flex;
+  width: 100%;
+
+  .list-item-left {
+    width: 70%;
+
+    .left-top {
+      height: 80%;
+
+      .MuiCardContent-root {
+        padding: 5%;
+      }
+    }
+
+    .left-bottom {
+      height: 20%;
+
+      button {
+        padding-left: 5%;
+      }
+
+      .MuiCardActions-root {
+        padding: 0;
+      }
+    }
+  }
+
+  .list-item-right {
+    display: flex;
+    justify-content: flex-end;
+    width: 30%;
+    
+    img {
+      object-fit: cover;
+      align-self: center;
+      width: 100%;
+    }
+  }
+
+}
