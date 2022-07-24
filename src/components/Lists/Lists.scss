@@ -1,0 +1,30 @@
+.index-lists {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+  width: 100%;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    width: 100%;
+    align-items: center;
+
+    li {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      width: 100%;
+      margin-bottom: 3%;
+
+      .index-list-item {
+        display: flex;
+        background-color: rgb(223, 220, 220);;
+        width: 45%;
+        max-width: 100%;
+      }
+    }
+  }
+}
+
