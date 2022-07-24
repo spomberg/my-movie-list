@@ -4,15 +4,16 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import './ListItem.scss';
 
 export default function ListItem(props) {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card className='index-list-item' sx={{ maxWidth: 345 }}>
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography variant="h6" component="div">
           {props.title}
         </Typography>
-        <Typography variant="subtitle1" component="div">
+        <Typography gutterBottom variant="subtitle1" component="div">
           {props.created_by}
         </Typography>
         <Typography variant="body2" color="text.secondary">
@@ -24,9 +25,9 @@ export default function ListItem(props) {
       </CardActions>
       <CardMedia
         component="img"
-        alt={props.title}
+        alt="list first movie poster"
         height="140"
-        image={props.index_poster}
+        image={props.image}
       />
     </Card>
   )
