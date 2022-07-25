@@ -1,7 +1,7 @@
-import ListItem from "./ListItem"
-import "./Lists.scss"
+import ListItem from "../Lists/ListItem"
+import "./Home.scss"
 
-export default function Lists(props) {
+export default function Home(props) {
   return (
     <div className="index-lists">
       <ul>
