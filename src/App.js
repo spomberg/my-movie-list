@@ -3,18 +3,17 @@ import Home from './components/Home/Home';
 import List from './components/Lists/List';
 import useIndexData from './hooks/useIndexData';
 import './App.scss';
-import { Routes, Route, useParams } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
-  const state = useIndexData();
-
+  const indexData = useIndexData();
   return (
     <div className='app'>
       <Navbar />
       <Routes>
         <Route
           path="*"
-          element={<Home lists={state.lists} />}
+          element={<Home lists={indexData.lists} />}
         />
         <Route
           path="lists/:listId"
