@@ -1,5 +1,5 @@
 import Navbar from './components/Navbar/Navbar';
-import Lists from './components/Lists/Lists';
+import Home from './components/Home/Home';
 import useApplicationData from './hooks/useApplicationData';
 import './App.scss';
 
@@ -9,7 +9,7 @@ function App() {
   return (
     <div className='app'>
       <Navbar />
-      <Lists lists={state.lists} />
+      <Home lists={state.lists} />
     </div>
   );
 }
