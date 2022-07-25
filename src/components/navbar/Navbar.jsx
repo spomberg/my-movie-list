@@ -9,6 +9,18 @@ import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import logo from '../../assets/logo.png'
 import { useState } from 'react';
 
+function LinkTab(props) {
+  return (
+    <Tab
+      component="a"
+      onClick={(event) => {
+        event.preventDefault();
+      }}
+      {...props}
+    />
+  );
+}
+
 export default function Navbar() {
   const [value, setValue] = useState(0);
 
@@ -20,11 +32,11 @@ export default function Navbar() {
       <div className='navbar'>
         <img src={logo} alt='logo' />
         <Tabs value={value} onChange={handleChange} aria-label="icon label tabs">
-          <Tab icon={<HomeIcon />} label="VIEW LISTS" />
-          <Tab icon={<FormatListNumberedIcon />} label="MY LISTS" />
-          <Tab icon={<PlaylistAddIcon />} label="CREATE LIST" />
-          <Tab icon={<PersonIcon />} label="LOGIN" />
-          <Tab icon={<PersonAddAltIcon />} label="SIGNUP" />
+          <LinkTab icon={<HomeIcon />} label="VIEW LISTS" href="/" />
+          <LinkTab icon={<FormatListNumberedIcon />} label="MY LISTS" />
+          <LinkTab icon={<PlaylistAddIcon />} label="CREATE LIST" />
+          <LinkTab icon={<PersonIcon />} label="LOGIN" />
+          <LinkTab icon={<PersonAddAltIcon />} label="SIGNUP" />
         </Tabs>
       </div>
     )
