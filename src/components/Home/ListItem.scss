@@ -16,12 +16,13 @@
     .left-bottom {
       height: 20%;
 
-      button {
-        padding-left: 5%;
-      }
-
+      
       .MuiCardActions-root {
         padding: 0;
+        
+        .MuiButton-root {
+          padding-left: 5%;
+        }
       }
     }
   }
