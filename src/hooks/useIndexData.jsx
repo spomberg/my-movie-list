@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import axiosConn from "../axiosConn";
 
-export default function useApplicationData() {
+export default function useIndexData() {
   const [state, setState] = useState({ lists: [] });
 
   useEffect(() => {
