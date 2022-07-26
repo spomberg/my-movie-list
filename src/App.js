@@ -12,14 +12,14 @@ function App() {
       <Navbar />
       <Routes>
         <Route
-          path="*"
+          path='*'
           element={<Home lists={indexData.lists} />}
         />
         <Route
-          path="lists/:listId"
+          path='lists/:listId'
           element={<List />}
         />
-    </Routes>
+      </Routes>
     </div>
   );
 }
