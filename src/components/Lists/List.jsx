@@ -13,23 +13,24 @@ export default function List() {
   const list = useListData(params.listId).list
 
   useEffect(() => {
-    setTimeout(() => setLoading(false), 1000)
+    setTimeout(() => setLoading(false), 1500)
   }, [])
 
   return (
     <div className='list'>
-      {loading ? (<BeatLoader className='loader' loading={loading} />
-      ) : (<Box 
-              className='header'
-              component='span'
-              sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-            >
-              <Card>
-                <Typography variant={'h3'}>{list.title}</Typography>
-                <Typography variant={'h6'} color="text.secondary">Created by {list.username}</Typography>
-                <Typography variant={'h5'}>Description: {list.description}</Typography>
-              </Card>
-          </Box>)}
+      {loading ? (<BeatLoader className='loader' loading={loading} />) : (
+        <Box 
+          className='header'
+          component='span'
+          sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
+        >
+          <Card>
+            <Typography variant={'h3'}>{list.title}</Typography>
+            <Typography variant={'h6'} color="text.secondary">Created by {list.username}</Typography>
+            <Typography variant={'h5'}>Description: {list.description}</Typography>
+          </Card>
+        </Box>
+      )}
     </div>
   )
 }
