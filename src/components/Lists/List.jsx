@@ -5,16 +5,19 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import MovieItem from './MovieItem';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { BeatLoader } from 'react-spinners';
 import { useEffect, useState } from 'react';
+import CopyToClipboard from 'react-copy-to-clipboard';
 
 export default function List() {
   const [loading, setLoading] = useState(true)
   const params = useParams();
   const list = useListData(params.listId).list
+  const [value, setValue] = useState('')
 
   useEffect(() => {
-    setTimeout(() => setLoading(false), 2000)
+    setTimeout(() => setLoading(false), 3000)
   }, [])
 
   return (
@@ -32,6 +35,16 @@ export default function List() {
               <Typography variant={'h5'}>Description: {list.description}</Typography>
             </Card>
           </Box>
+          <div className='share-link'>
+            <CopyToClipboard 
+              value={value}
+              onCopy={() => setValue(true)}
+              text={`${process.env.REACT_APP_BASE_URL_LOCAL}/lists/${params.listId}`}
+            >
+              <span>Share list <ContentCopyIcon /></span>
+            </CopyToClipboard>
+            {value ? <span style={{color: 'red'}}>Copied.</span> : null}
+          </div>
           <ul>
             {list.movies.map(movie => {
               return (
