@@ -9,7 +9,7 @@ export default function useListData(params) {
     .then(all => {
       setState(prev => ({ ...prev, list: all.data }));
     })
-  }, []);
+  }, [params]);
 
   return state;
 }
