@@ -4,7 +4,7 @@ const axiosConn = axios.create();
 
 switch (process.env.NODE_ENV) {
   case 'development':
-    axiosConn.defaults.baseURL = process.env.REACT_APP_BASE_URL_LOCAL;
+    axiosConn.defaults.baseURL = process.env.REACT_APP_API_URL;
     break;
 
   default:
