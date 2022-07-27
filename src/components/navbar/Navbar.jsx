@@ -5,7 +5,6 @@ import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import PersonIcon from '@mui/icons-material/Person';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import logo from '../../assets/logo.png'
-import Box from '@mui/material/Box';
 import { Link } from 'react-router-dom';
 
 
@@ -13,13 +12,25 @@ export default function Navbar() {
     return (
       <div className='navbar'>
         <img src={logo} alt='logo' />
-        <Box>
-      <ul>
+      <ul className='main-menu'>
         <li>
           <Link to={'/'}><HomeIcon/>{`\nVIEW LISTS`}</Link>
         </li>
+        <li>
+          <Link to={''}><FormatListNumberedIcon/>{`\nMY LISTS`}</Link>
+        </li>
+        <li>
+          <Link to={''}><PlaylistAddIcon/>{`\nCREATE LIST`}</Link>
+        </li>
       </ul>
-    </Box>
+      <ul className='login-menu'>
+        <li>
+        <Link to={'/'}><PersonIcon/>{`\nLOGIN`}</Link>
+        </li>
+        <li>
+        <Link to={'/'}><PersonAddAltIcon/>{`\nSIGNUP`}</Link>
+        </li>
+      </ul>
       </div>
     )
 }
