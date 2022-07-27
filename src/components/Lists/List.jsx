@@ -17,7 +17,7 @@ export default function List() {
   const [value, setValue] = useState('')
 
   useEffect(() => {
-    setTimeout(() => setLoading(false), 3000)
+    setTimeout(() => setLoading(false), 2000)
   }, [])
 
   return (
@@ -43,7 +43,7 @@ export default function List() {
             >
               <span>Share list <ContentCopyIcon /></span>
             </CopyToClipboard>
-            {value ? <span style={{color: 'red'}}>Copied.</span> : null}
+            {value ? <span style={{color: 'red'}}>Copied</span> : null}
           </div>
           <ul>
             {list.movies.map(movie => {
