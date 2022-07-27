@@ -8,6 +8,19 @@
   top: 0;
   z-index: 1;
 
+  ul{
+    li{
+      list-style: none;
+      white-space: pre;
+      text-align: center;
+
+      a {
+        text-decoration: none;
+        color: #3f51b5;
+      }
+    }
+  }
+
   img {
     position: fixed;
     left: 0;
