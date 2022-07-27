@@ -20,7 +20,7 @@ export default function Navbar() {
           <Link to={''}><FormatListNumberedIcon/>{`\nMY LISTS`}</Link>
         </li>
         <li>
-          <Link to={''}><PlaylistAddIcon/>{`\nCREATE LIST`}</Link>
+          <Link to={'/lists/new'}><PlaylistAddIcon/>{`\nCREATE LIST`}</Link>
         </li>
       </ul>
       <ul className='login-menu'>
