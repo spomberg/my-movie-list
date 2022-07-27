@@ -1,7 +1,25 @@
 .movie-item {
+  display: flex;
+  margin-bottom: 2%;
+  margin-right: 8%;
+  margin-left: 2%;
+  margin-left: 2%;
+  height: 25rem;
+  background-color: rgb(235, 237, 240);
+  
   ul {
     li {
       list-style: none;
+    }
+  }
+
+  .movie-item-left {
+    display: flex;
+
+    img {
+      object-fit: contain;
+      width: 20rem;
+      height: 100%;
     }
   }
 }
