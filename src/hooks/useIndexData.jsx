@@ -5,7 +5,7 @@ export default function useIndexData() {
   const [state, setState] = useState({ lists: [] });
 
   useEffect(() => {
-    Promise.resolve(axiosConn.get("/lists"))
+    Promise.resolve(axiosConn.get("/api/lists"))
     .then(all => {
       setState(prev => ({ ...prev, lists: all.data }));
     })

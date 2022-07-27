@@ -5,7 +5,7 @@ export default function useListData(params) {
   const [state, setState] = useState({ list: {} });
 
   useEffect(() => {
-    Promise.resolve(axiosConn.get(`/lists/${params}`))
+    Promise.resolve(axiosConn.get(`/api/lists/${params}`))
     .then(all => {
       setState(prev => ({ ...prev, list: all.data }));
     })
