@@ -9,16 +9,26 @@
   z-index: 1;
 
   ul{
+    display: flex;
+    justify-content: center;
+
     li{
       list-style: none;
       white-space: pre;
       text-align: center;
+      margin-right: 20%;
 
       a {
         text-decoration: none;
         color: #3f51b5;
       }
     }
+  }
+
+  .login-menu {
+    position: fixed;
+    right: 0;
+    margin-right: 2%;
   }
 
   img {
