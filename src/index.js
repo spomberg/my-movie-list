@@ -8,6 +8,7 @@ import {
 import App from './App';
 import Home from './components/Home/Home';
 import List from './components/Lists/List';
+import NewList from './components/NewList/NewList'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,6 +17,7 @@ root.render(
       <Route path="*" element={<App />}>
         <Route path="lists" element={<Home />}>
           <Route path=":listId" element={<List />} />
+          <Route path="new" element={<NewList />} />
         </Route>
       </Route>
     </Routes>

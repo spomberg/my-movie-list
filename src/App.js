@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
 import List from './components/Lists/List';
+import NewList from './components/NewList/NewList'
 import useIndexData from './hooks/useIndexData';
 import './App.scss';
 import { Routes, Route } from 'react-router-dom';
@@ -18,6 +19,10 @@ function App() {
         <Route
           path='lists/:listId'
           element={<List />}
+        />
+        <Route
+          path='lists/new'
+          element={<NewList />}
         />
       </Routes>
     </div>
