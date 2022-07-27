@@ -6,7 +6,7 @@ import './MovieItem.scss';
 
 export default function MovieItem(props) {
   return (
-    <Card className='movie-item' sx={{ maxWidth: 345 }}>
+    <Card className='movie-item'>
       <div className='movie-item-left'>
         <a 
         href={`https://www.themoviedb.org/movie/${props.id}`}
@@ -20,7 +20,8 @@ export default function MovieItem(props) {
             image={props.poster}
           />
         </a>
-        <div className='left-top'>
+      </div>
+      <div className='movie-item-right'>
         <CardContent>
           <Typography variant="h6" component="div">
             {`${props.title} (${new Date(props.release_date).getFullYear()})`}
@@ -51,11 +52,6 @@ export default function MovieItem(props) {
             </ul>
           </Typography>
         </CardContent>
-        </div>
-        <div className='left-bottom'>
-        </div>
-      </div>
-      <div className='list-item-right'>
       </div>
     </Card>
   )
