@@ -2,7 +2,7 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import './ListItem.scss';
 
@@ -22,7 +22,7 @@ export default function ListItem(props) {
         </div>
         <div className='left-bottom'>
         <CardActions>
-          <Button size="small" href={`lists/${props.id}`}>View List</Button>
+          <Link to={`/lists/${props.id}`} className='view-list-button'>VIEW LIST</Link>
         </CardActions>
         </div>
       </div>

@@ -1,3 +1,5 @@
+@import "../../global.scss";
+
 .index-list-item {
   display: flex;
   width: 100%;
@@ -16,12 +18,14 @@
     .left-bottom {
       height: 20%;
 
-      
       .MuiCardActions-root {
         padding: 0;
         
-        .MuiButton-root {
+        .view-list-button {
           padding-left: 5%;
+          text-decoration: none;
+          font-size: small;
+          color: $mainColor;
         }
       }
     }
@@ -38,5 +42,4 @@
       width: 100%;
     }
   }
-
 }
