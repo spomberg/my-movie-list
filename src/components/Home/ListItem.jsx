@@ -29,9 +29,9 @@ export default function ListItem(props) {
       <div className='list-item-right'>
         <CardMedia
           component="img"
-          alt={`${props.title} first movie poster`}
+          alt={props.title ? `${props.title} first movie poster` : `No image available`}
           height="140"
-          image={props.image}
+          image={props.image ? props.image : `https://res.cloudinary.com/djv3yhbok/image/upload/v1658030155/1665px-No-Image-Placeholder.svg_jgp6ma.png`}
         />
       </div>
     </Card>
