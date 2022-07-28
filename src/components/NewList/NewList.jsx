@@ -1,171 +1,53 @@
-import React from 'react';
+import { useState } from 'react';
 import './NewList.scss'
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import Switch from '@mui/material/Switch';
+import Button from '@mui/material/Button';
 
 export default function NewList() {
+  const [checked, setChecked] = useState(true);
+  const handleChange = event => setChecked(!checked)
+
     return (
       <div className='new-list'>
         <Typography variant="h4">Create List</Typography>
         <Box
+          className='create-list-form'
           component="form"
+          method='post'
+          action={`${process.env.REACT_APP_API_URL}api/list/new`}
           sx={{
             '& .MuiTextField-root': { m: 1, width: '25ch' },
           }}
-          noValidate
           autoComplete="off"
         >
+          <TextField
+            required
+            id="outlined-required"
+            label="Title"
+            name="title"
+          />
+          <TextField
+            id="outlined-multiline-static"
+            label="Description"
+            multiline
+            rows={4}
+            name="desc"
+          />
           <div>
-            <TextField
-              required
-              id="outlined-required"
-              label="Title"
-            />
-            <TextField
-              disabled
-              id="outlined-disabled"
-              label="Disabled"
-              defaultValue="Hello World"
-            />
-            <TextField
-              required
-              id="outlined-required"
-              label="Password"
-              autoComplete="current-password"
-            />
-            <TextField
-              id="outlined-read-only-input"
-              label="Read Only"
-              defaultValue="Hello World"
-              InputProps={{
-                readOnly: true,
-              }}
-            />
-            <TextField
-              id="outlined-number"
-              label="Number"
-              type="number"
-              InputLabelProps={{
-                shrink: true,
-              }}
-            />
-            <TextField id="outlined-search" label="Search field" type="search" />
-            <TextField
-              id="outlined-helperText"
-              label="Helper text"
-              defaultValue="Default Value"
-              helperText="Some important text"
-            />
+            Private
+            <Switch name="is_public" 
+              checked={checked} 
+              value={checked} 
+              onClick={handleChange}
+              inputProps={{ 'aria-label': 'controlled' }}
+            />Public
           </div>
-          <div>
-            <TextField
-              required
-              id="filled-required"
-              label="Required"
-              defaultValue="Hello World"
-              variant="filled"
-            />
-            <TextField
-              disabled
-              id="filled-disabled"
-              label="Disabled"
-              defaultValue="Hello World"
-              variant="filled"
-            />
-            <TextField
-              id="filled-password-input"
-              label="Password"
-              type="password"
-              autoComplete="current-password"
-              variant="filled"
-            />
-            <TextField
-              id="filled-read-only-input"
-              label="Read Only"
-              defaultValue="Hello World"
-              InputProps={{
-                readOnly: true,
-              }}
-              variant="filled"
-            />
-            <TextField
-              id="filled-number"
-              label="Number"
-              type="number"
-              InputLabelProps={{
-                shrink: true,
-              }}
-              variant="filled"
-            />
-            <TextField
-              id="filled-search"
-              label="Search field"
-              type="search"
-              variant="filled"
-            />
-            <TextField
-              id="filled-helperText"
-              label="Helper text"
-              defaultValue="Default Value"
-              helperText="Some important text"
-              variant="filled"
-            />
-          </div>
-          <div>
-            <TextField
-              required
-              id="standard-required"
-              label="Required"
-              defaultValue="Hello World"
-              variant="standard"
-            />
-            <TextField
-              disabled
-              id="standard-disabled"
-              label="Disabled"
-              defaultValue="Hello World"
-              variant="standard"
-            />
-            <TextField
-              id="standard-password-input"
-              label="Password"
-              type="password"
-              autoComplete="current-password"
-              variant="standard"
-            />
-            <TextField
-              id="standard-read-only-input"
-              label="Read Only"
-              defaultValue="Hello World"
-              InputProps={{
-                readOnly: true,
-              }}
-              variant="standard"
-            />
-            <TextField
-              id="standard-number"
-              label="Number"
-              type="number"
-              InputLabelProps={{
-                shrink: true,
-              }}
-              variant="standard"
-            />
-            <TextField
-              id="standard-search"
-              label="Search field"
-              type="search"
-              variant="standard"
-            />
-            <TextField
-              id="standard-helperText"
-              label="Helper text"
-              defaultValue="Default Value"
-              helperText="Some important text"
-              variant="standard"
-            />
-          </div>
+          <Button variant="contained" type="submit">
+            CREATE LIST
+          </Button>
         </Box>
       </div>
     )
