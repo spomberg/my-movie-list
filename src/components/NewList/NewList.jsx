@@ -12,14 +12,14 @@ export default function NewList() {
 
     return (
       <div className='new-list'>
-        <Typography variant="h4">Create List</Typography>
+        <Typography className='page-title' variant="h4">Create List</Typography>
         <Box
           className='create-list-form'
           component="form"
           method='post'
           action={`${process.env.REACT_APP_API_URL}api/list/new`}
           sx={{
-            '& .MuiTextField-root': { m: 1, width: '25ch' },
+            '& .MuiTextField-root': { m: 1.5, width: '30%' },
           }}
           autoComplete="off"
         >
@@ -36,7 +36,7 @@ export default function NewList() {
             rows={4}
             name="desc"
           />
-          <div>
+          <div className='public-toggle'>
             Private
             <Switch name="is_public" 
               checked={checked} 
