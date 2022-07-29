@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './NewList.scss'
+import './NewList.scss';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -8,7 +8,7 @@ import Button from '@mui/material/Button';
 
 export default function NewList() {
   const [checked, setChecked] = useState(true);
-  const handleChange = event => setChecked(!checked)
+  const handleChange = () => setChecked(!checked);
 
     return (
       <div className='new-list'>
