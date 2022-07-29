@@ -27,6 +27,9 @@ export default function NewList() {
         navigate(`/lists/edit/${res.data._id}`);
         enqueueSnackbar('List created!', { variant: 'success' });
       })
+      .catch(err => {
+        enqueueSnackbar(err.message, { variant: 'error' });
+      })
     } else enqueueSnackbar(`Title can't be empty`, { variant: 'error' })
   }
 
