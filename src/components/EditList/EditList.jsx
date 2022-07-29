@@ -21,7 +21,6 @@ export default function EditList() {
   useEffect(() => {
     Promise.resolve(axiosConn.get(`/api/lists/${params.listId}`))
     .then(all => {
-      console.log(all);
       if (all.data.code === 404) {
         enqueueSnackbar(all.data.message, { variant: 'error' });
         navigate('/');
