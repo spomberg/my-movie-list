@@ -9,7 +9,7 @@ import axiosConn from '../../axiosConn';
 import { useSnackbar } from 'notistack';
 import { useNavigate } from 'react-router-dom';
 
-export default function NewList() {
+export default function NewList(props) {
   const navigate = useNavigate();
   const [checked, setChecked] = useState(true);
   const handleToggleChange = () => setChecked(!checked);
@@ -25,6 +25,9 @@ export default function NewList() {
       Promise.resolve(axiosConn.post('api/list/new', { title: title, desc: description, is_public: checked }))
       .then(res => {
         navigate(`/lists/edit/${res.data._id}`);
+        if (checked) {
+          props.setIndexData(props.indexData);
+        } 
         enqueueSnackbar('List created!', { variant: 'success' });
       })
       .catch(err => {
