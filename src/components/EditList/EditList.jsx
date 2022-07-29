@@ -8,8 +8,12 @@ import axiosConn from "../../axiosConn";
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { BeatLoader } from 'react-spinners';
+import { useSnackbar } from 'notistack';
+import { useNavigate } from 'react-router-dom';
 
 export default function EditList() {
+  const navigate = useNavigate();
+  const { enqueueSnackbar } = useSnackbar();
   const params = useParams();
   const [state, setState] = useState({ list: { } });
   const [loading, setLoading] = useState(true)
@@ -17,10 +21,19 @@ export default function EditList() {
   useEffect(() => {
     Promise.resolve(axiosConn.get(`/api/lists/${params.listId}`))
     .then(all => {
+      console.log(all);
+      if (all.data.code === 404) {
+        enqueueSnackbar(all.data.message, { variant: 'error' });
+        navigate('/');
+      }
       setState(prev => ({ ...prev, list: all.data }));
     })
     .then(() => {
       setLoading(false);
+    })
+    .catch(err => {
+      enqueueSnackbar(err.message, { variant: 'error' });
+      navigate('/');
     })
   }, [params]);
 
