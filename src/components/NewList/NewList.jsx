@@ -5,10 +5,33 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Switch from '@mui/material/Switch';
 import Button from '@mui/material/Button';
+import axiosConn from '../../axiosConn';
+import { useSnackbar } from 'notistack';
 
 export default function NewList() {
   const [checked, setChecked] = useState(true);
-  const handleChange = () => setChecked(!checked);
+  const handleToggleChange = () => setChecked(!checked);
+  const [title, setTitle] = useState("");
+  const handleTitleChange = (event) => setTitle(event.target.value);
+  const [description, setDescription] = useState("");
+  const handleDescriptionChange = (event) => setDescription(event.target.value);
+  const { enqueueSnackbar } = useSnackbar();
+
+  const newList = {
+    title: title,
+    desc: description,
+    is_public: checked
+  }
+  
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    Promise.resolve(axiosConn.post('api/list/new', { newList }))
+    .then(res => {
+      console.log(newList);
+      console.log(res);
+    })
+    enqueueSnackbar('List created!', { variant: 'success' });
+  }
 
     return (
       <div className='new-list'>
@@ -28,6 +51,8 @@ export default function NewList() {
             id="outlined-required"
             label="Title"
             name="title"
+            value={title}
+            onChange={handleTitleChange}
           />
           <TextField
             id="outlined-multiline-static"
@@ -35,17 +60,24 @@ export default function NewList() {
             multiline
             rows={4}
             name="desc"
+            value={description}
+            onChange={handleDescriptionChange}
           />
           <div className='public-toggle'>
             Private
-            <Switch name="is_public" 
+            <Switch 
+              name="is_public" 
               checked={checked} 
               value={checked} 
-              onClick={handleChange}
+              onClick={handleToggleChange}
               inputProps={{ 'aria-label': 'controlled' }}
             />Public
           </div>
-          <Button variant="contained" type="submit">
+          <Button 
+            variant="contained" 
+            type="submit"
+            onClick={handleSubmit}
+          >
             CREATE LIST
           </Button>
         </Box>
