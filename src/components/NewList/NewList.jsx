@@ -7,8 +7,10 @@ import Switch from '@mui/material/Switch';
 import Button from '@mui/material/Button';
 import axiosConn from '../../axiosConn';
 import { useSnackbar } from 'notistack';
+import { useNavigate } from 'react-router-dom';
 
 export default function NewList() {
+  const navigate = useNavigate();
   const [checked, setChecked] = useState(true);
   const handleToggleChange = () => setChecked(!checked);
   const [title, setTitle] = useState("");
@@ -16,21 +18,16 @@ export default function NewList() {
   const [description, setDescription] = useState("");
   const handleDescriptionChange = (event) => setDescription(event.target.value);
   const { enqueueSnackbar } = useSnackbar();
-
-  const newList = {
-    title: title,
-    desc: description,
-    is_public: checked
-  }
   
   const handleSubmit = (event) => {
     event.preventDefault();
-    Promise.resolve(axiosConn.post('api/list/new', { newList }))
-    .then(res => {
-      console.log(newList);
-      console.log(res);
-    })
-    enqueueSnackbar('List created!', { variant: 'success' });
+    if (title !== "" && title !== null) {
+      Promise.resolve(axiosConn.post('api/list/new', { title: title, desc: description, is_public: checked }))
+      .then(res => {
+        navigate(`/lists/edit/${res.data._id}`);
+        enqueueSnackbar('List created!', { variant: 'success' });
+      })
+    } else enqueueSnackbar(`Title can't be empty`, { variant: 'error' })
   }
 
     return (
@@ -50,7 +47,6 @@ export default function NewList() {
             required
             id="outlined-required"
             label="Title"
-            name="title"
             value={title}
             onChange={handleTitleChange}
           />
@@ -59,7 +55,6 @@ export default function NewList() {
             label="Description"
             multiline
             rows={4}
-            name="desc"
             value={description}
             onChange={handleDescriptionChange}
           />
