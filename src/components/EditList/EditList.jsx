@@ -6,6 +6,7 @@ import Switch from '@mui/material/Switch';
 import Button from '@mui/material/Button';
 import axiosConn from "../../axiosConn";
 import MovieItem from '../Lists/MovieItem'
+import DeleteIcon from '@mui/icons-material/Delete';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { BeatLoader } from 'react-spinners';
@@ -122,6 +123,11 @@ export default function EditList() {
                     directed_by={movie.directed_by}
                     cast={movie.cast}
                   />
+                  <button
+                    alt='Remove movie'
+                  >
+                    <DeleteIcon />
+                  </button>
                 </li>
               )
             })}
