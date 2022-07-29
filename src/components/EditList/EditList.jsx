@@ -23,6 +23,19 @@ export default function EditList() {
   const [checked, setChecked] = useState(true);
   const handleToggleChange = () => setChecked(!checked);
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (title !== "" && title !== null) {
+      Promise.resolve(axiosConn.put(`api/list/${params.listId}/edit`, { title: title, desc: description, is_public: checked }))
+      .then(() => {
+        enqueueSnackbar('List updated!', { variant: 'success' });
+      })
+      .catch(err => {
+        enqueueSnackbar(err.message, { variant: 'error' });
+      })
+    } else enqueueSnackbar(`Title can't be empty`, { variant: 'error' })
+  }
+
   useEffect(() => {
     Promise.resolve(axiosConn.get(`/api/lists/${params.listId}`))
     .then(all => {
@@ -41,7 +54,7 @@ export default function EditList() {
       enqueueSnackbar(err.message, { variant: 'error' });
       navigate('/');
     })
-  }, [params]);
+  }, [params, navigate, enqueueSnackbar]);
 
   
 
@@ -51,12 +64,12 @@ export default function EditList() {
         <>
           <Typography className='page-title' variant="h4">Edit List</Typography>
           <Box
-            className='create-list-form'
+            className='edit-list-form'
             component="form"
-            method='post'
+            method='put'
             action={`${process.env.REACT_APP_API_URL}api/list/new`}
             sx={{
-              '& .MuiTextField-root': { m: 1.5, width: '30%' },
+              '& .MuiTextField-root': { m: 1.5 },
             }}
             autoComplete="off"
           >
@@ -86,8 +99,12 @@ export default function EditList() {
                 inputProps={{ 'aria-label': 'controlled' }}
               />Public
             </div>
-            <Button variant="contained" type="submit">
-              CREATE LIST
+            <Button 
+              variant="contained" 
+              type="submit"
+              onClick={handleSubmit}
+            >
+              UPDATE LIST
             </Button>
           </Box>
         </>
