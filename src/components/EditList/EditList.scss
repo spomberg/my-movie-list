@@ -24,5 +24,23 @@
   ul {
     list-style: decimal;
     list-style-position: inside;
+
+    li {
+      display: flex;
+
+      .movie-item {
+        margin-right: 2%;
+      }
+
+      button {
+        background-color: transparent;
+        border: 0;
+        cursor: pointer;
+      }
+
+      .MuiSvgIcon-root {
+        font-size: xx-large;
+      }
+    }
   }  
 }
