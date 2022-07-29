@@ -5,6 +5,7 @@ import TextField from '@mui/material/TextField';
 import Switch from '@mui/material/Switch';
 import Button from '@mui/material/Button';
 import axiosConn from "../../axiosConn";
+import MovieItem from '../Lists/MovieItem'
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { BeatLoader } from 'react-spinners';
@@ -22,6 +23,7 @@ export default function EditList() {
   const handleDescriptionChange = (event) => setDescription(event.target.value);
   const [checked, setChecked] = useState(true);
   const handleToggleChange = () => setChecked(!checked);
+  const [movies, setMovies] = useState([]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -46,6 +48,7 @@ export default function EditList() {
       setTitle(all.data.title);
       setDescription(all.data.description);
       setChecked(all.data.is_public);
+      setMovies(all.data.movies);
     })
     .then(() => {
       setLoading(false);
@@ -55,8 +58,6 @@ export default function EditList() {
       navigate('/');
     })
   }, [params, navigate, enqueueSnackbar]);
-
-  
 
   return (
     <div className='edit-list'>
@@ -107,6 +108,24 @@ export default function EditList() {
               UPDATE LIST
             </Button>
           </Box>
+          <ul>
+            {movies.map(movie => {
+              return (
+                <li key={movie.id}>
+                  <MovieItem 
+                    id={movie.id}
+                    title={movie.original_title}
+                    overview={movie.overview}
+                    poster={movie.poster_path}
+                    runtime={movie.runtime}
+                    release_date={movie.release_date}
+                    directed_by={movie.directed_by}
+                    cast={movie.cast}
+                  />
+                </li>
+              )
+            })}
+          </ul>
         </>
       )}
     </div>
