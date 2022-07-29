@@ -8,7 +8,8 @@ import {
 import App from './App';
 import Home from './components/Home/Home';
 import List from './components/Lists/List';
-import NewList from './components/NewList/NewList'
+import NewList from './components/NewList/NewList';
+import EditList from './components/EditList/EditList';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -18,6 +19,7 @@ root.render(
         <Route path="lists" element={<Home />}>
           <Route path=":listId" element={<List />} />
           <Route path="new" element={<NewList />} />
+          <Route path="edit" element={<EditList />} />
         </Route>
       </Route>
     </Routes>

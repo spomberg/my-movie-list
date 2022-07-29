@@ -3,6 +3,7 @@ import Home from './components/Home/Home';
 import List from './components/Lists/List';
 import NewList from './components/NewList/NewList'
 import useIndexData from './hooks/useIndexData';
+import EditList from './components/EditList/EditList';
 import './App.scss';
 import { Routes, Route } from 'react-router-dom';
 
@@ -23,6 +24,10 @@ function App() {
         <Route
           path='lists/new'
           element={<NewList />}
+        />
+        <Route
+          path='lists/edit/:listId'
+          element={<EditList />}
         />
       </Routes>
     </div>
