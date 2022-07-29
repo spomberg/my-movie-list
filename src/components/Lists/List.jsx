@@ -1,6 +1,5 @@
 import './List.scss';
 import { useParams } from 'react-router-dom';
-import useListData from '../../hooks/useListData'
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
@@ -9,16 +8,22 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { BeatLoader } from 'react-spinners';
 import { useEffect, useState } from 'react';
 import CopyToClipboard from 'react-copy-to-clipboard';
+import axiosConn from '../../axiosConn';
+import { useSnackbar } from 'notistack';
 
 export default function List() {
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
   const params = useParams();
-  const list = useListData(params.listId).list
-  const [value, setValue] = useState('')
+  const [list, setList] = useState({});
+  const [value, setValue] = useState('');
+  const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
-    setTimeout(() => setLoading(false), 2000)
-  }, [])
+    Promise.resolve(axiosConn.get(`/api/lists/${params.listId}`))
+    .then(all => {setList(all.data)})
+    .then(() => setLoading(false))
+    .catch(err => enqueueSnackbar(err.message, { variant: 'error'}));
+  }, [params.listId, enqueueSnackbar])
 
   return (
     <div className='list'>
