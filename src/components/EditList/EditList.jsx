@@ -15,8 +15,13 @@ export default function EditList() {
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
   const params = useParams();
-  const [state, setState] = useState({ list: { } });
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
+  const [title, setTitle] = useState('');
+  const handleTitleChange = (event) => setTitle(event.target.value);
+  const [description, setDescription] = useState('');
+  const handleDescriptionChange = (event) => setDescription(event.target.value);
+  const [checked, setChecked] = useState(true);
+  const handleToggleChange = () => setChecked(!checked);
 
   useEffect(() => {
     Promise.resolve(axiosConn.get(`/api/lists/${params.listId}`))
@@ -25,7 +30,9 @@ export default function EditList() {
         enqueueSnackbar(all.data.message, { variant: 'error' });
         navigate('/');
       }
-      setState(prev => ({ ...prev, list: all.data }));
+      setTitle(all.data.title);
+      setDescription(all.data.description);
+      setChecked(all.data.is_public);
     })
     .then(() => {
       setLoading(false);
@@ -36,8 +43,7 @@ export default function EditList() {
     })
   }, [params]);
 
-  const [checked, setChecked] = useState(state.list.is_public);
-  const handleChange = () => setChecked(!checked)
+  
 
   return (
     <div className='edit-list'>
@@ -59,22 +65,24 @@ export default function EditList() {
               id="outlined-required"
               label="Title"
               name="title"
-              value={state.list.title}
+              value={title}
+              onChange={handleTitleChange}
             />
             <TextField
               id="outlined-multiline-static"
               label="Description"
               multiline
-              value={state.list.description}
+              value={description}
               rows={4}
               name="desc"
+              onChange={handleDescriptionChange}
             />
             <div className='public-toggle'>
               Private
               <Switch name="is_public"
                 checked={checked} 
                 value={checked} 
-                onClick={handleChange}
+                onClick={handleToggleChange}
                 inputProps={{ 'aria-label': 'controlled' }}
               />Public
             </div>
