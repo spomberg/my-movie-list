@@ -26,19 +26,6 @@ export default function EditList() {
   const handleToggleChange = () => setChecked(!checked);
   const [movies, setMovies] = useState([]);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (title !== "" && title !== null) {
-      Promise.resolve(axiosConn.put(`api/list/${params.listId}/edit`, { title: title, desc: description, is_public: checked }))
-      .then(() => {
-        enqueueSnackbar('List updated!', { variant: 'success' });
-      })
-      .catch(err => {
-        enqueueSnackbar(err.message, { variant: 'error' });
-      })
-    } else enqueueSnackbar(`Title can't be empty`, { variant: 'error' })
-  }
-
   useEffect(() => {
     Promise.resolve(axiosConn.get(`/api/lists/${params.listId}`))
     .then(all => {
@@ -59,6 +46,29 @@ export default function EditList() {
       navigate('/');
     })
   }, [params, navigate, enqueueSnackbar]);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (title !== "" && title !== null) {
+      Promise.resolve(axiosConn.put(`api/list/${params.listId}/edit`, { title: title, desc: description, is_public: checked }))
+      .then(() => {
+        enqueueSnackbar('List updated!', { variant: 'success' });
+      })
+      .catch(err => {
+        enqueueSnackbar(err.message, { variant: 'error' });
+      })
+    } else enqueueSnackbar(`Title can't be empty`, { variant: 'error' })
+  }
+
+  const handleRemove = (movieID) => {
+    Promise.resolve(axiosConn.put(`api/list/${params.listId}/edit`, { remove_movie: movieID }))
+    .then(() => {
+      enqueueSnackbar('Movie removed!', { variant: 'success' });
+      const updatedMoviesArr = movies.filter(data => data.id != movieID);
+      setMovies(updatedMoviesArr);
+    })
+    .catch(err => enqueueSnackbar(err.message, { variant:'error' }))
+  }
 
   return (
     <div className='edit-list'>
@@ -124,7 +134,7 @@ export default function EditList() {
                     cast={movie.cast}
                   />
                   <button
-                    alt='Remove movie'
+                    onClick={() => handleRemove(movie.id)}
                   >
                     <DeleteIcon />
                   </button>
