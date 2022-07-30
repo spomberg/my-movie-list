@@ -9,6 +9,8 @@ import MovieItem from '../Lists/MovieItem'
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import SearchMovie from './SearchMovie';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
@@ -126,7 +128,7 @@ export default function EditList() {
             </Button>
           </Box>
           <ul>
-            {movies.map(movie => {
+            {movies.map((movie, index) => {
               return (
                 <li key={movie.id}>
                   <MovieItem 
@@ -139,11 +141,25 @@ export default function EditList() {
                     directed_by={movie.directed_by}
                     cast={movie.cast}
                   />
-                  <button
-                    onClick={() => handleRemove(movie.id)}
-                  >
-                    <DeleteIcon />
-                  </button>
+                  <div className='list-buttons'>
+                    <button
+                      {...index === 0 ? { disabled: true } : {} }
+                      onClick={() => handleRemove(movie.id)}
+                      >
+                      <KeyboardArrowUpIcon />
+                    </button>
+                    <button
+                      {...index >= movies.length - 1 ? { disabled: true } : {} }
+                      onClick={() => handleRemove(movie.id)}
+                      >
+                      <KeyboardArrowDownIcon />
+                    </button>
+                    <button
+                      onClick={() => handleRemove(movie.id)}
+                    >
+                      <DeleteIcon />
+                    </button>
+                  </div>
                 </li>
               )
             })}
