@@ -64,7 +64,7 @@ export default function EditList() {
     Promise.resolve(axiosConn.put(`api/list/${params.listId}/edit`, { remove_movie: movieID }))
     .then(() => {
       enqueueSnackbar('Movie removed!', { variant: 'success' });
-      const updatedMoviesArr = movies.filter(data => data.id != movieID);
+      const updatedMoviesArr = movies.filter(data => data.id !== movieID);
       setMovies(updatedMoviesArr);
     })
     .catch(err => enqueueSnackbar(err.message, { variant:'error' }))
