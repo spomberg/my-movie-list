@@ -6,7 +6,10 @@ import Switch from '@mui/material/Switch';
 import Button from '@mui/material/Button';
 import axiosConn from "../../axiosConn";
 import MovieItem from '../Lists/MovieItem'
+import Fab from '@mui/material/Fab';
+import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
+import SearchMovie from './SearchMovie';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { BeatLoader } from 'react-spinners';
@@ -25,6 +28,9 @@ export default function EditList() {
   const [checked, setChecked] = useState(true);
   const handleToggleChange = () => setChecked(!checked);
   const [movies, setMovies] = useState([]);
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   useEffect(() => {
     Promise.resolve(axiosConn.get(`/api/lists/${params.listId}`))
@@ -142,6 +148,15 @@ export default function EditList() {
               )
             })}
           </ul>
+          <Fab className='add-icon' color="primary" aria-label="add">
+            <AddIcon onClick={handleOpen} />
+          </Fab>
+          <SearchMovie 
+            open={open}
+            handleClose={handleClose}
+            movies={movies}
+            setMovies={setMovies}
+          />
         </>
       )}
     </div>
