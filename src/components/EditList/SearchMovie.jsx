@@ -21,19 +21,19 @@ export default function SearchMovie(props) {
   };  
 
   return (
-  <div>
-    <Modal
-        open={props.open}
-        onClose={props.handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Add Movie
-          </Typography>
-        </Box>
-      </Modal>
-  </div>
+    <div>
+      <Modal
+          open={props.open}
+          onClose={props.handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              Add Movie
+            </Typography>
+          </Box>
+        </Modal>
+    </div>
   )
 }
