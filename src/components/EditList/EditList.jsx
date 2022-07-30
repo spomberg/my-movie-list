@@ -23,14 +23,20 @@ export default function EditList() {
   const { enqueueSnackbar } = useSnackbar();
   const params = useParams();
   const [loading, setLoading] = useState(true);
+
+  // FORM STATES AND HANDLING METHODS
   const [title, setTitle] = useState('');
   const handleTitleChange = (event) => setTitle(event.target.value);
   const [description, setDescription] = useState('');
   const handleDescriptionChange = (event) => setDescription(event.target.value);
   const [checked, setChecked] = useState(true);
   const handleToggleChange = () => setChecked(!checked);
-  const [movies, setMovies] = useState([]);
-  const [open, setOpen] = useState(false);
+
+  // LIST STATE
+  const [movies, setMovies] = useState([]); 
+
+  // MODAL STATE AND HANDLING METHODS
+  const [open, setOpen] = useState(false); 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -55,7 +61,7 @@ export default function EditList() {
     })
   }, [params, navigate, enqueueSnackbar]);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event) => { // HANDLE FORM UPDATES
     event.preventDefault();
     if (title !== "" && title !== null) {
       Promise.resolve(axiosConn.put(`api/list/${params.listId}/edit`, { title: title, desc: description, is_public: checked }))
@@ -68,7 +74,7 @@ export default function EditList() {
     } else enqueueSnackbar(`Title can't be empty`, { variant: 'error' })
   }
 
-  const handleRemove = (movieID) => {
+  const handleRemove = (movieID) => { // HANDLE MOVIE REMOVAL
     Promise.resolve(axiosConn.put(`api/list/${params.listId}/edit`, { remove_movie: movieID }))
     .then(() => {
       enqueueSnackbar('Movie removed!', { variant: 'success' });
