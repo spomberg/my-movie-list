@@ -3,13 +3,11 @@ import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
 import List from './components/Lists/List';
 import NewList from './components/NewList/NewList'
-import useIndexData from './hooks/useIndexData';
 import EditList from './components/EditList/EditList';
 import { SnackbarProvider } from 'notistack';
 import { Routes, Route } from 'react-router-dom';
 
 function App() {
-  const indexData = useIndexData();
   return (
     <div className='app'>
       <SnackbarProvider>
@@ -17,7 +15,7 @@ function App() {
         <Routes>
           <Route
             path='*'
-            element={<Home lists={indexData.lists} />}
+            element={<Home />}
           />
           <Route
             path='lists/:listId'
