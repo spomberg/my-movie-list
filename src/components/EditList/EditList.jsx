@@ -12,6 +12,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import SearchMovie from './SearchMovie';
+import { moveElement } from '../../helpers/helpers';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { BeatLoader } from 'react-spinners';
@@ -61,7 +62,7 @@ export default function EditList() {
     })
   }, [params, navigate, enqueueSnackbar]);
 
-  const handleSubmit = (event) => { // HANDLE FORM UPDATES
+  const handleSubmit = (event) => { // HANDLES FORM UPDATES
     event.preventDefault();
     if (title !== "" && title !== null) {
       Promise.resolve(axiosConn.put(`api/list/${params.listId}/edit`, { title: title, desc: description, is_public: checked }))
@@ -74,7 +75,7 @@ export default function EditList() {
     } else enqueueSnackbar(`Title can't be empty`, { variant: 'error' })
   }
 
-  const handleRemove = (movieID) => { // HANDLE MOVIE REMOVAL
+  const handleRemove = (movieID) => { // HANDLES MOVIE REMOVAL
     Promise.resolve(axiosConn.put(`api/list/${params.listId}/edit`, { remove_movie: movieID }))
     .then(() => {
       enqueueSnackbar('Movie removed!', { variant: 'success' });
@@ -82,6 +83,35 @@ export default function EditList() {
       setMovies(updatedMoviesArr);
     })
     .catch(err => enqueueSnackbar(err.message, { variant:'error' }))
+  }
+
+  const handleMove = (position, index) => { // HANDLES MOVING MOVIES UP AND DOWN THE LIST
+    if (position === 'up') {
+      Promise.resolve(axiosConn.put(`api/list/${params.listId}/edit`, { move_up: index }))
+      .then((res) => {
+        if (res.data.code === 200) {
+          enqueueSnackbar('List updated!', { variant: 'success' });
+          const updatedMoviesArr = moveElement(movies, index, -1);
+          setMovies(updatedMoviesArr);
+        }
+        else enqueueSnackbar(res.data.message, { variant: 'error' });
+      })
+      .catch(err => enqueueSnackbar(err.message, { variant: 'error' }))
+    }
+    
+    if (position === 'down') {
+      Promise.resolve(axiosConn.put(`api/list/${params.listId}/edit`, { move_down: index }))
+      .then((res) => {
+        if (res.data.code === 200) {
+          enqueueSnackbar('List updated!', { variant: 'success' });
+          const updatedMoviesArr = movies;
+          moveElement(updatedMoviesArr, index, 1);
+          setMovies(updatedMoviesArr);
+        }
+        else enqueueSnackbar(res.data.message, { variant: 'error' })
+      })
+      .catch(err => enqueueSnackbar(err.message, { variant: 'error' }))
+    }
   }
 
   return (
@@ -150,13 +180,13 @@ export default function EditList() {
                   <div className='list-buttons'>
                     <button
                       {...index === 0 ? { disabled: true } : {} }
-                      onClick={() => handleRemove(movie.id)}
+                      onClick={() => handleMove('up', index)}
                       >
                       <KeyboardArrowUpIcon />
                     </button>
                     <button
                       {...index >= movies.length - 1 ? { disabled: true } : {} }
-                      onClick={() => handleRemove(movie.id)}
+                      onClick={() => handleMove('down', index)}
                       >
                       <KeyboardArrowDownIcon />
                     </button>
