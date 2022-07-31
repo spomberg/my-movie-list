@@ -66,21 +66,27 @@ export default function EditList() {
     event.preventDefault();
     if (title !== "" && title !== null) {
       Promise.resolve(axiosConn.put(`api/list/${params.listId}/edit`, { title: title, desc: description, is_public: checked }))
-      .then(() => {
-        enqueueSnackbar('List updated!', { variant: 'success' });
+      .then((res) => {
+        if (res.data.code === 200) {
+         enqueueSnackbar('List updated!', { variant: 'success' });
+        }
+        else enqueueSnackbar(res.data.message, { variant: 'error' });
       })
       .catch(err => {
         enqueueSnackbar(err.message, { variant: 'error' });
       })
-    } else enqueueSnackbar(`Title can't be empty`, { variant: 'error' })
+    } else enqueueSnackbar(`Title can't be empty`, { variant: 'error' });
   }
 
   const handleRemove = (movieID) => { // HANDLES MOVIE REMOVAL
     Promise.resolve(axiosConn.put(`api/list/${params.listId}/edit`, { remove_movie: movieID }))
-    .then(() => {
-      enqueueSnackbar('Movie removed!', { variant: 'success' });
-      const updatedMoviesArr = movies.filter(data => data.id !== movieID);
-      setMovies(updatedMoviesArr);
+    .then((res) => {
+      if (res.data.code === 200) {
+        enqueueSnackbar('Movie removed!', { variant: 'success' });
+        const updatedMoviesArr = movies.filter(data => data.id !== movieID);
+        setMovies(updatedMoviesArr);
+      }
+      else enqueueSnackbar(res.data.message, { variant: 'error' })
     })
     .catch(err => enqueueSnackbar(err.message, { variant:'error' }))
   }
