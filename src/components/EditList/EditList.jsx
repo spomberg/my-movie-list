@@ -11,7 +11,7 @@ import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import SearchMovie from './SearchMovie';
+import SearchMovie from '../SearchMovie/SearchMovie';
 import { moveElement } from '../../helpers/helpers';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
