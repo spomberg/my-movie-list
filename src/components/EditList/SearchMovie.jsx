@@ -8,6 +8,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
 import axiosConn from '../../axiosConn';
+import MovieItem from '../Lists/MovieItem';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useSnackbar } from 'notistack';
@@ -15,6 +16,7 @@ import { useSnackbar } from 'notistack';
 export default function SearchMovie(props) {
   const { enqueueSnackbar } = useSnackbar();
   const [input, setInput] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
   const handleInputChange = (event) => setInput(event.target.value);
   const navigate = useNavigate();
   const style = {
