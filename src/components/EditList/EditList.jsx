@@ -111,8 +111,7 @@ export default function EditList() {
       .then((res) => {
         if (res.data.code === 200) {
           enqueueSnackbar('List updated!', { variant: 'success' });
-          const updatedMoviesArr = movies;
-          moveElement(updatedMoviesArr, index, 1);
+          const updatedMoviesArr = moveElement(movies, index, 1);
           setMovies(updatedMoviesArr);
           navigate(`/lists/edit/${params.listId}`);
         }
