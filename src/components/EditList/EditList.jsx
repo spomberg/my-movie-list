@@ -93,6 +93,7 @@ export default function EditList() {
           enqueueSnackbar('List updated!', { variant: 'success' });
           const updatedMoviesArr = moveElement(movies, index, -1);
           setMovies(updatedMoviesArr);
+          navigate(`/lists/edit/${params.listId}`);
         }
         else enqueueSnackbar(res.data.message, { variant: 'error' });
       })
@@ -107,6 +108,7 @@ export default function EditList() {
           const updatedMoviesArr = movies;
           moveElement(updatedMoviesArr, index, 1);
           setMovies(updatedMoviesArr);
+          navigate(`/lists/edit/${params.listId}`);
         }
         else enqueueSnackbar(res.data.message, { variant: 'error' })
       })
