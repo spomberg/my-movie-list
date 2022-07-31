@@ -1,0 +1,39 @@
+.results-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 15%;
+
+  img {
+    object-fit: contain;
+    width: 100%;
+    cursor: pointer;
+  }
+
+  h6 {
+    text-align: center;
+  }
+
+  .add-movie {
+    display: none;
+    position: absolute;
+    top: 35%;
+    cursor: pointer;
+
+    .MuiSvgIcon-root{
+      font-size: xxx-large;
+      outline: 1rem;
+    }
+  }
+
+  &:hover {
+    img {
+      background-color: black;
+      opacity: 0.4;
+    }
+
+    .add-movie {
+      display: flex;
+    }
+  }
+}
