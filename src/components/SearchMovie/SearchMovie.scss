@@ -35,14 +35,14 @@
     ul {
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
       padding-left: 0;
       margin-left: 4%;
-      height: 10rem;;
 
       li {
         list-style: none;
-        margin-right: 3%;
-        height: 5rem;
+        margin-right: 4.5%;
+        margin-bottom: 3%;
       }
     }
     
