@@ -39,7 +39,11 @@ export default function EditList() {
   // MODAL STATE AND HANDLING METHODS
   const [open, setOpen] = useState(false); 
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [searchResults, setSearchResults] = useState([]);
+  const handleClose = () => {
+    setOpen(false);
+    setSearchResults([]);
+  };
 
   useEffect(() => {
     Promise.resolve(axiosConn.get(`/api/lists/${params.listId}`))
@@ -215,6 +219,8 @@ export default function EditList() {
             handleClose={handleClose}
             movies={movies}
             setMovies={setMovies}
+            searchResults={searchResults}
+            setSearchResults={setSearchResults}
           />
         </>
       )}
