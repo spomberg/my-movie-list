@@ -9,6 +9,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
 import axiosConn from '../../axiosConn';
 import ResultsItem from './ResultsItem';
+import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useSnackbar } from 'notistack';
 import { BeatLoader } from 'react-spinners';
@@ -18,6 +19,7 @@ export default function SearchMovie(props) {
   const [loading, setLoading] = useState(false);
   const [input, setInput] = useState('');
   const handleInputChange = (event) => setInput(event.target.value);
+  const params = useParams();
   const style = {
     position: 'absolute',
     top: '50%',
@@ -39,6 +41,16 @@ export default function SearchMovie(props) {
       props.setSearchResults(res.data);
     })
     .then(() => setLoading(false));
+  }
+
+  const handleAdd = (movieID) => {
+    Promise.resolve((axiosConn.put(`api/list/${params.listId}/edit`, { add_movie: movieID })))
+    .then((res) => {
+      if (res.data.code === 200) {
+        enqueueSnackbar('Movie added', { variant: 'success' })
+      }
+      else enqueueSnackbar(res.data.message, { variant: 'error' })
+    })
   }
 
   return (
@@ -87,6 +99,7 @@ export default function SearchMovie(props) {
                             id={result.id}
                             title={result.title}
                             poster_path={result.poster_path}
+                            onClick={handleAdd}
                           />
                         </li>
                       )
