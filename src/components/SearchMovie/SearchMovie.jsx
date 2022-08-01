@@ -61,6 +61,11 @@ export default function SearchMovie(props) {
                 variant="filled"
                 value={input}
                 onChange={handleInputChange}
+                onKeyDown={event => {
+                  if (event.key === "Enter") {
+                    handleSearch();
+                  }
+                }}
               />
               <Button 
                 variant="contained" 
