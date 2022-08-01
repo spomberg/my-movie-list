@@ -17,7 +17,6 @@ export default function SearchMovie(props) {
   const { enqueueSnackbar } = useSnackbar();
   const [loading, setLoading] = useState(false);
   const [input, setInput] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
   const handleInputChange = (event) => setInput(event.target.value);
   const style = {
     position: 'absolute',
@@ -37,7 +36,7 @@ export default function SearchMovie(props) {
     Promise.resolve(axiosConn.put('api/list/search-movie', { query: input }))
     .then((res) => {
       setInput("");
-      setSearchResults(res.data);
+      props.setSearchResults(res.data);
     })
     .then(() => setLoading(false));
   }
@@ -76,7 +75,7 @@ export default function SearchMovie(props) {
               <Box sx={{ bgcolor: '#cfe8fc', height: '100vh' }} >
                 {loading ? (<BeatLoader className='loader' loading={loading} />) : (
                   <ul>
-                    {searchResults.map(result => {
+                    {props.searchResults.map(result => {
                       return (
                         <li key={result.id}>
                           <ResultsItem
