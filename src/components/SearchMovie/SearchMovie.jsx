@@ -8,17 +8,17 @@ import SearchIcon from '@mui/icons-material/Search';
 import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
 import axiosConn from '../../axiosConn';
-import MovieItem from '../Lists/MovieItem';
-import { useNavigate } from 'react-router-dom';
+import ResultsItem from './ResultsItem';
 import { useState } from 'react';
 import { useSnackbar } from 'notistack';
+import { BeatLoader } from 'react-spinners';
 
 export default function SearchMovie(props) {
   const { enqueueSnackbar } = useSnackbar();
+  const [loading, setLoading] = useState(false);
   const [input, setInput] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const handleInputChange = (event) => setInput(event.target.value);
-  const navigate = useNavigate();
   const style = {
     position: 'absolute',
     top: '50%',
@@ -31,6 +31,16 @@ export default function SearchMovie(props) {
     boxShadow: 24,
     p: 4,
   };  
+
+  const handleSearch = () => {
+    setLoading(true);
+    Promise.resolve(axiosConn.put('api/list/search-movie', { query: input }))
+    .then((res) => {
+      setInput("");
+      setSearchResults(res.data);
+    })
+    .then(() => setLoading(false));
+  }
 
   return (
     <div className='search-movie'>
@@ -53,13 +63,33 @@ export default function SearchMovie(props) {
                 value={input}
                 onChange={handleInputChange}
               />
-              <Button variant="contained" endIcon={<SearchIcon />}>
+              <Button 
+                variant="contained" 
+                endIcon={<SearchIcon />}
+                onClick={handleSearch}
+              >
                 SEARCH
               </Button>
             </div>
             <CssBaseline />
             <Container fixed>
-              <Box sx={{ bgcolor: '#cfe8fc', height: '100vh' }} />
+              <Box sx={{ bgcolor: '#cfe8fc', height: '100vh' }} >
+                {loading ? (<BeatLoader className='loader' loading={loading} />) : (
+                  <ul>
+                    {searchResults.map(result => {
+                      return (
+                        <li key={result.id}>
+                          <ResultsItem
+                            id={result.id}
+                            title={result.title}
+                            poster_path={result.poster_path}
+                          />
+                        </li>
+                      )
+                    })}
+                  </ul>
+                )}
+              </Box>
             </Container>
           </Box>
         </Modal>
