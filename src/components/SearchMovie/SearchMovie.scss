@@ -2,6 +2,12 @@
   display: flex;
   flex-direction: column;
   background-color: rgb(244, 244, 244);
+
+  .loader {
+    position: fixed;
+    top:55%;
+    left: 50%;
+  }
   
   .search-input {
     display: flex;
@@ -24,5 +30,21 @@
     background-color: white;
     margin-top: 2.5%;
     height: 55vh;
+    overflow: auto;
+    
+    ul {
+      display: flex;
+      flex-direction: row;
+      padding-left: 0;
+      margin-left: 4%;
+      height: 10rem;;
+
+      li {
+        list-style: none;
+        margin-right: 3%;
+        height: 5rem;
+      }
+    }
+    
   }
 }
