@@ -13,8 +13,10 @@ import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useSnackbar } from 'notistack';
 import { BeatLoader } from 'react-spinners';
+import { useNavigate } from 'react-router-dom';
 
 export default function SearchMovie(props) {
+  const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
   const [loading, setLoading] = useState(false);
   const [input, setInput] = useState('');
@@ -48,9 +50,11 @@ export default function SearchMovie(props) {
     .then((res) => {
       if (res.data.code === 200) {
         enqueueSnackbar('Movie added', { variant: 'success' })
+        navigate(`/lists/edit/${params.listId}`);
       }
       else enqueueSnackbar(res.data.message, { variant: 'error' })
     })
+    .catch((err) => enqueueSnackbar(err.message, { variant: 'error' }))
   }
 
   return (

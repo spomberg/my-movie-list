@@ -43,7 +43,6 @@ export default function EditList() {
   const handleClose = () => {
     setOpen(false);
     setSearchResults([]);
-    navigate(`/lists/edit/${params.listId}`);
   };
 
   useEffect(() => {
