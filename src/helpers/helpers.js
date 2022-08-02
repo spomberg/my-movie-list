@@ -9,7 +9,7 @@ function moveElement(arr, index, position) {
 function isDuplicate(list, movieID) {
   
   for (let index = 0; index < list.length; index++) {
-    if (movieID == list[index].id) {
+    if (movieID === list[index].id) {
       return true;
     }
   }
