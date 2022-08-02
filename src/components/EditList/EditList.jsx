@@ -211,8 +211,13 @@ export default function EditList() {
               )
             })}
           </ul>
-          <Fab className='add-icon' color="primary" aria-label="add">
-            <AddIcon onClick={handleOpen} />
+          <Fab 
+            className='add-icon' 
+            onClick={handleOpen} 
+            color="primary" 
+            aria-label="add"
+          >
+            <AddIcon />
           </Fab>
           <SearchMovie 
             open={open}
