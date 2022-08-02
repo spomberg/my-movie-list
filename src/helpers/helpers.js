@@ -6,4 +6,15 @@ function moveElement(arr, index, position) {
   return arr;
 }
 
-module.exports = { moveElement };
+function isDuplicate(list, movieID) {
+  
+  for (let index = 0; index < list.length; index++) {
+    if (movieID == list[index].id) {
+      return true;
+    }
+  }
+  
+  return false;
+}
+
+module.exports = { moveElement, isDuplicate };
