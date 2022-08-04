@@ -52,10 +52,10 @@ export default function EditList() {
         enqueueSnackbar(all.data.message, { variant: 'error' });
         navigate('/');
       }
-      setTitle(all.data.title);
-      setDescription(all.data.description);
-      setChecked(all.data.is_public);
-      setMovies(all.data.movies);
+      setTitle(all.data.list.title);
+      setDescription(all.data.list.description);
+      setChecked(all.data.list.is_public);
+      setMovies(all.data.list.movies);
     })
     .then(() => {
       setLoading(false);
