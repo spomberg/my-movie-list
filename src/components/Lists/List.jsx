@@ -27,11 +27,11 @@ export default function List() {
         enqueueSnackbar(all.data.message, { variant: 'error' });
         navigate('/');
       }
-      setList(all.data)
+      setList(all.data.list)
     })
     .then(() => setLoading(false))
     .catch(err => enqueueSnackbar(err.message, { variant: 'error'}));
-  }, [params.listId, enqueueSnackbar])
+  }, [params.listId, enqueueSnackbar, navigate])
 
   return (
     <div className='list'>
