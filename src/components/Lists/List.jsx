@@ -10,17 +10,25 @@ import { useEffect, useState } from 'react';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import axiosConn from '../../axiosConn';
 import { useSnackbar } from 'notistack';
+import { useNavigate } from 'react-router-dom';
 
 export default function List() {
   const [loading, setLoading] = useState(true);
   const params = useParams();
+  const navigate = useNavigate();
   const [list, setList] = useState({});
   const [value, setValue] = useState('');
   const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
     Promise.resolve(axiosConn.get(`/api/lists/${params.listId}`))
-    .then(all => {setList(all.data)})
+    .then(all => {
+      if (all.data.code !== 200) {
+        enqueueSnackbar(all.data.message, { variant: 'error' });
+        navigate('/');
+      }
+      setList(all.data)
+    })
     .then(() => setLoading(false))
     .catch(err => enqueueSnackbar(err.message, { variant: 'error'}));
   }, [params.listId, enqueueSnackbar])
