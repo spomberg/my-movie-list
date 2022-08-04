@@ -46,9 +46,9 @@ export default function EditList() {
   };
 
   useEffect(() => {
-    Promise.resolve(axiosConn.get(`/api/lists/${params.listId}`))
+    Promise.resolve(axiosConn.get(`/api/lists/${params.listId}/edit-view`))
     .then(all => {
-      if (all.data.code === 404) {
+      if (all.data.code !== 200) {
         enqueueSnackbar(all.data.message, { variant: 'error' });
         navigate('/');
       }
