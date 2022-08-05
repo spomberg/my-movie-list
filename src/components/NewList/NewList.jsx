@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './NewList.scss';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
@@ -32,6 +32,16 @@ export default function NewList() {
       })
     } else enqueueSnackbar(`Title can't be empty`, { variant: 'error' })
   }
+
+  useEffect(() => {
+    Promise.resolve(axiosConn.get('/api/user'))
+    .then((res) => {
+      if (res.data.code !== 200) {
+        enqueueSnackbar("Please login to create a new list.", { variant: 'info' });
+        navigate('/login');
+      }
+    })
+  }, [])
 
     return (
       <div className='new-list'>
