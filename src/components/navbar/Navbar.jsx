@@ -25,7 +25,7 @@ export default function Navbar() {
       </ul>
       <ul className='login-menu'>
         <li>
-        <Link to={'/'}><PersonIcon/>{`\nLOGIN`}</Link>
+        <Link to={'/login'}><PersonIcon/>{`\nLOGIN`}</Link>
         </li>
         <li>
         <Link to={'/'}><PersonAddAltIcon/>{`\nSIGNUP`}</Link>
