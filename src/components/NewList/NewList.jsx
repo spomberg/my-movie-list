@@ -41,7 +41,7 @@ export default function NewList() {
         navigate('/login');
       }
     })
-  }, [])
+  }, [enqueueSnackbar, navigate])
 
     return (
       <div className='new-list'>
