@@ -33,7 +33,7 @@ export default function Login() {
         navigate('/');
       }
     })
-  }, [enqueueSnackbar])
+  }, [enqueueSnackbar, navigate])
   
   const handleSubmit = (event) => {
     event.preventDefault();
