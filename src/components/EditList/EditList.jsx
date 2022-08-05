@@ -51,11 +51,12 @@ export default function EditList() {
       if (all.data.code !== 200) {
         enqueueSnackbar(all.data.message, { variant: 'error' });
         navigate('/');
-      }
-      setTitle(all.data.list.title);
-      setDescription(all.data.list.description);
-      setChecked(all.data.list.is_public);
-      setMovies(all.data.list.movies);
+      } else {
+          setTitle(all.data.list.title);
+          setDescription(all.data.list.description);
+          setChecked(all.data.list.is_public);
+          setMovies(all.data.list.movies);
+        }
     })
     .then(() => {
       setLoading(false);
