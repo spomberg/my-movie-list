@@ -4,6 +4,7 @@ import Home from './components/Home/Home';
 import List from './components/Lists/List';
 import NewList from './components/NewList/NewList'
 import EditList from './components/EditList/EditList';
+import Login from './components/Login/Login';
 import { SnackbarProvider } from 'notistack';
 import { Routes, Route } from 'react-router-dom';
 
@@ -28,6 +29,10 @@ function App() {
           <Route
             path='lists/edit/:listId'
             element={<EditList />}
+          />
+          <Route
+            path='login'
+            element={<Login />}
           />
         </Routes>
       </SnackbarProvider>
