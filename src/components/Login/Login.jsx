@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import axiosConn from "../../axiosConn";
 import { useNavigate } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -24,6 +24,16 @@ export default function Login() {
     setPasswordEmpty(false);
   }
   const [passwordEmpty, setPasswordEmpty] = useState(false);
+
+  useEffect(() => {
+    Promise.resolve(axiosConn.get('/api/user'))
+    .then((res) => {
+      if (res.data.code === 200) {
+        enqueueSnackbar("You're already logged in!", { variant: 'info' });
+        navigate('/');
+      }
+    })
+  }, [enqueueSnackbar])
   
   const handleSubmit = (event) => {
     event.preventDefault();
