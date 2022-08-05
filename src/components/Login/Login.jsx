@@ -13,17 +13,33 @@ export default function Login() {
   const { enqueueSnackbar } = useSnackbar();
   //FORM STATES
   const [email, setEmail] = useState('');
-  const handleEmailChange = (event) => setEmail(event.target.value);
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+    setEmailEmpty(false);
+  }
+  const [emailEmpty, setEmailEmpty] = useState(false);
   const [password, setPassword] = useState('');
-  const handlePasswordChange = (event) => setPassword(event.target.value);
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+    setPasswordEmpty(false);
+  }
+  const [passwordEmpty, setPasswordEmpty] = useState(false);
   
   const handleSubmit = (event) => {
     event.preventDefault();
-    Promise.resolve(axiosConn.post('/api/login', 
-    { email: email, password: password}, { withCredentials: true }))
-    .then((res) => {
-      console.log(res);
-    });
+    if (email === "") {setEmailEmpty(true);}
+    if (password === "") setPasswordEmpty(true); 
+    if (email !== "" && password !== "") {
+      Promise.resolve(axiosConn.post('/api/login', { email: email, password: password}))
+      .then((res) => {
+        if (res.status === 204) {
+          enqueueSnackbar("You're logged in!", { variant: 'success' });
+          navigate('/');
+        }
+        else enqueueSnackbar(res.data.message, { variant: 'error' });
+      })
+      .catch((err) => enqueueSnackbar(err.message, { variant: 'error' }))
+    }
   } 
 
   return (
@@ -39,6 +55,8 @@ export default function Login() {
         >
           <TextField
             required
+            {...emailEmpty ? {error: true} : {}}
+            {...emailEmpty ? {helperText:"Email can't be empty!"} : {}}
             id="outlined-required"
             label="Email"
             type='email'
@@ -47,6 +65,8 @@ export default function Login() {
           />
           <TextField
             required
+            {...passwordEmpty ? {error: true} : {}}
+            {...passwordEmpty ? {helperText:"Password can't be empty!"} : {}}
             id="outlined-password-input"
             label="Password"
             type='password'
