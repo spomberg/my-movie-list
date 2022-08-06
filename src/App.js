@@ -8,12 +8,15 @@ import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
 import { SnackbarProvider } from 'notistack';
 import { Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
 
 function App() {
+  const [username, setUsername] = useState('');
+
   return (
     <div className='app'>
       <SnackbarProvider>
-        <Navbar />
+        <Navbar username={username} setUsername={setUsername} />
         <Routes>
           <Route
             path='*'
@@ -33,11 +36,11 @@ function App() {
           />
           <Route
             path='login'
-            element={<Login />}
+            element={<Login setUsername={setUsername} />}
           />
           <Route
             path='signup'
-            element={<Signup />}
+            element={<Signup setUsername={setUsername} />}
           />
         </Routes>
       </SnackbarProvider>
