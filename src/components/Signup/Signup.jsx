@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 import { useEffect, useState } from 'react';
 
-export default function Signup() {
+export default function Signup(props) {
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
   //FORM STATES
@@ -65,21 +65,19 @@ export default function Signup() {
     if (passwordConfirmation === "") setPasswordConfirmationEmpty(true);
     if (password !== passwordConfirmation) setPasswordNotMatch(true);
     if (!validator.isEmail(email)) setInvalidEmail(true);
-    if (email !== "" 
-        && username !== "" 
-        && password !== "" 
-        && passwordConfirmation !== ""
-        && password === passwordConfirmation
-        && validator.isEmail(email)) {
+    if (email !== "" && username !== "" && password !== "" && passwordConfirmation !== "" && password === passwordConfirmation && validator.isEmail(email)) {
           Promise.resolve(axiosConn.post('api/signup', { email: email, username: username, password: password }))
           .then((res) => {
             if (res.status === 204) {
-              enqueueSnackbar('User created!', { variant: 'success' })
-              navigate('/')
+              enqueueSnackbar('User created!', { variant: 'success' });
+              navigate('/');
+              Promise.resolve(axiosConn.get('api/user'))
+              .then((res) => props.setUsername(res.data.username))
+              .catch((err) => enqueueSnackbar(err.message, { variant: 'error' }))
             }
-            else enqueueSnackbar(res.data.message, { variant: 'error' })
+            else enqueueSnackbar(res.data.message, { variant: 'error' });
           })
-          .catch((err) => enqueueSnackbar(err.message, { variant: 'error' }))
+          .catch((err) => enqueueSnackbar(err.message, { variant: 'error' }));
         }
   }
 
