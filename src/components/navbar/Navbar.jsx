@@ -28,7 +28,7 @@ export default function Navbar() {
         <Link to={'/login'}><PersonIcon/>{`\nLOGIN`}</Link>
         </li>
         <li>
-        <Link to={'/'}><PersonAddAltIcon/>{`\nSIGNUP`}</Link>
+        <Link to={'/signup'}><PersonAddAltIcon/>{`\nSIGNUP`}</Link>
         </li>
       </ul>
       </div>
