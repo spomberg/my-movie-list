@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import axiosConn from "../../axiosConn";
+import validator from 'validator';
 import { useNavigate } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 import { useEffect, useState } from 'react';
@@ -23,13 +24,16 @@ export default function Signup() {
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
     setEmailEmpty(false);
+    setInvalidEmail(false);
   }
   const [emailEmpty, setEmailEmpty] = useState(false);
+  const [InvalidEmail, setInvalidEmail] = useState(false);
   
   const [password, setPassword] = useState('');
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
     setPasswordEmpty(false);
+    setPasswordNotMatch(false);
   }
   const [passwordEmpty, setPasswordEmpty] = useState(false);
   
@@ -37,6 +41,7 @@ export default function Signup() {
   const handlePasswordConfirmationChange = (event) => {
     setPasswordConfirmation(event.target.value);
     setPasswordConfirmationEmpty(false);
+    setPasswordNotMatch(false);
   }
   const [passwordConfirmationEmpty, setPasswordConfirmationEmpty] = useState(false);
 
@@ -53,8 +58,29 @@ export default function Signup() {
   }, [enqueueSnackbar, navigate])
 
   const handleSubmit = (event) => {
-   event.preventdefault();
-  //  if (!validator.isEmail(email)) setInvalidEmail(true);
+    event.preventDefault();
+    if (email === "") setEmailEmpty(true);
+    if (username === "") setUsernameEmpty(true);
+    if (password === "") setPasswordEmpty(true);
+    if (passwordConfirmation === "") setPasswordConfirmationEmpty(true);
+    if (password !== passwordConfirmation) setPasswordNotMatch(true);
+    if (!validator.isEmail(email)) setInvalidEmail(true);
+    if (email !== "" 
+        && username !== "" 
+        && password !== "" 
+        && passwordConfirmation !== ""
+        && password === passwordConfirmation
+        && validator.isEmail(email)) {
+          Promise.resolve(axiosConn.post('api/signup', { email: email, username: username, password: password }))
+          .then((res) => {
+            if (res.status === 204) {
+              enqueueSnackbar('User created!', { variant: 'success' })
+              navigate('/')
+            }
+            else enqueueSnackbar(res.data.message, { variant: 'error' })
+          })
+          .catch((err) => enqueueSnackbar(err.message, { variant: 'error' }))
+        }
   }
 
   return (
@@ -80,9 +106,10 @@ export default function Signup() {
           />
           <TextField
             required
-            {...emailEmpty ? {error: true} : {}}
+            {...emailEmpty || InvalidEmail ? {error: true} : {}}
             {...emailEmpty ? {helperText:"Email can't be empty!"} : {}}
-            id="outlined-required"
+            {...InvalidEmail ? {helperText:"Email is not valid!"} : {}}
+            id="outlined-email-required"
             label="Email"
             type='email'
             value={email}
@@ -100,10 +127,10 @@ export default function Signup() {
           />
           <TextField
             required
-            {...passwordEmpty || passwordNotMatch ? {error: true} : {}}
-            {...passwordEmpty ? {helperText:"Password confirmation can't be empty!"} : {}}
+            {...passwordConfirmationEmpty || passwordNotMatch ? {error: true} : {}}
+            {...passwordConfirmationEmpty ? {helperText:"Password confirmation can't be empty!"} : {}}
             {...passwordNotMatch ? {helperText:"Password and password confirmation don't match!"} : {}}
-            id="outlined-password-input"
+            id="outlined-password-confirmation-input"
             label="Confirm Password"
             type='password'
             value={passwordConfirmation}
