@@ -37,7 +37,7 @@ export default function Login() {
   
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (email === "") {setEmailEmpty(true);}
+    if (email === "") setEmailEmpty(true);
     if (password === "") setPasswordEmpty(true); 
     if (email !== "" && password !== "") {
       Promise.resolve(axiosConn.post('/api/login', { email: email, password: password}))
