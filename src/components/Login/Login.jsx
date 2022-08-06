@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 import { useEffect, useState } from 'react';
 
-export default function Login() {
+export default function Login(props) {
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
   //FORM STATES
@@ -45,6 +45,9 @@ export default function Login() {
         if (res.status === 204) {
           enqueueSnackbar("You're logged in!", { variant: 'success' });
           navigate('/');
+          Promise.resolve(axiosConn.get('api/user'))
+          .then((res) => props.setUsername(res.data.username))
+          .catch((err) => enqueueSnackbar(err.message, { variant: 'error' }))
         }
         else enqueueSnackbar(res.data.message, { variant: 'error' });
       })
