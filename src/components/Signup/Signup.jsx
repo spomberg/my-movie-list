@@ -90,7 +90,6 @@ export default function Signup(props) {
           sx={{
             '& .MuiTextField-root': { m: 1.5, width: '30%' },
           }}
-          autoComplete="off"
         >
           <TextField
             required
