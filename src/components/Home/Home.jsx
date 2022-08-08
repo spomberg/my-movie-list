@@ -14,8 +14,11 @@ export default function Home() {
   useEffect(() => {
     Promise.resolve(axiosConn.get("/api/lists"))
     .then(all => {
-      setLists(all.data);
-      setLoading(false);
+      if (all.data.code === 200) {
+        setLists(all.data.lists);
+        setLoading(false);
+      }
+      else enqueueSnackbar('Network error!', { variant: 'error' })
     })
     .catch(err => enqueueSnackbar(err.message, { variant: 'error' }))
   }, [enqueueSnackbar])
