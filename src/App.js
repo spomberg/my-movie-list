@@ -7,6 +7,7 @@ import EditList from './components/EditList/EditList';
 import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
 import MyLists from './components/MyLists/MyLists';
+import PageNotFound from './components/PageNotFound/PageNotFound';
 import { SnackbarProvider } from 'notistack';
 import { Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
@@ -20,7 +21,7 @@ function App() {
         <Navbar username={username} setUsername={setUsername} />
         <Routes>
           <Route
-            path='*'
+            path='/'
             element={<Home />}
           />
           <Route
@@ -46,6 +47,10 @@ function App() {
           <Route
             path='my-lists'
             element={<MyLists />}
+          />
+          <Route
+            path='*'
+            element={<PageNotFound />}
           />
         </Routes>
       </SnackbarProvider>
