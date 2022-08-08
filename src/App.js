@@ -6,6 +6,7 @@ import NewList from './components/NewList/NewList'
 import EditList from './components/EditList/EditList';
 import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
+import MyLists from './components/MyLists/MyLists';
 import { SnackbarProvider } from 'notistack';
 import { Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
@@ -41,6 +42,10 @@ function App() {
           <Route
             path='signup'
             element={<Signup setUsername={setUsername} />}
+          />
+          <Route
+            path='my-lists'
+            element={<MyLists />}
           />
         </Routes>
       </SnackbarProvider>
