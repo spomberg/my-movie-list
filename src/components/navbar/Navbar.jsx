@@ -45,7 +45,7 @@ export default function Navbar(props) {
           <Link to={'/'}><HomeIcon/>{`\nVIEW LISTS`}</Link>
         </li>
         <li>
-          <Link to={''}><FormatListNumberedIcon/>{`\nMY LISTS`}</Link>
+          <Link to={'/my-lists'}><FormatListNumberedIcon/>{`\nMY LISTS`}</Link>
         </li>
         <li>
           <Link to={'/lists/new'}><PlaylistAddIcon/>{`\nCREATE LIST`}</Link>
