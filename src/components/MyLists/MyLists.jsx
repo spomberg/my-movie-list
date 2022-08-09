@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography';
 import axiosConn from '../../axiosConn';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { removeMovie } from '../../helpers/helpers';
 import { BeatLoader } from 'react-spinners';
 import { useEffect, useState } from 'react';
 import { useSnackbar } from 'notistack';
@@ -35,7 +36,8 @@ export default function MyLists() {
     .then((res) => {
       if (res.data.code === 200) {
         enqueueSnackbar(res.data.message, { variant: 'success' });
-        navigate('/my-lists')
+        const updatedLists = removeMovie(lists, id);
+        setLists(updatedLists);
       }
       else enqueueSnackbar(res.data.message, { variant: 'error' })
     })
