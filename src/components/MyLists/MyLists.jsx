@@ -30,6 +30,18 @@ export default function MyLists() {
     .catch((err) => enqueueSnackbar(err.message, { variant: 'error' }))
   }, [enqueueSnackbar, navigate])
 
+  const handleDelete = (id) => { // HANDLES LIST DELETE
+    Promise.resolve(axiosConn.delete(`/api/list/${id}/delete`))
+    .then((res) => {
+      if (res.data.code === 200) {
+        enqueueSnackbar(res.data.message, { variant: 'success' });
+        navigate('/my-lists')
+      }
+      else enqueueSnackbar(res.data.message, { variant: 'error' })
+    })
+    .catch((err) => enqueueSnackbar(err.message, { variant: 'error' }))
+  }
+
   return (
     <div className='my-lists'>
       {loading ? (<BeatLoader className='loader' loading={loading} />) : (
@@ -52,7 +64,9 @@ export default function MyLists() {
                     />
                   </button>
                   <button>
-                    <DeleteIcon />
+                    <DeleteIcon 
+                      onClick={() => handleDelete(list.id)}
+                    />
                   </button>
                 </div>
               </li>
