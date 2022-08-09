@@ -31,7 +31,6 @@ export default function Home() {
           return(
             <li key={list.id}>
               <ListItem 
-                className="list-item"
                 id={list.id}
                 title={list.title}
                 username={list.username}
