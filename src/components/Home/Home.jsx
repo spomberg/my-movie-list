@@ -30,7 +30,8 @@ export default function Home() {
           {lists.map(list => {
           return(
             <li key={list.id}>
-              <ListItem className="list-item"
+              <ListItem 
+                className="list-item"
                 id={list.id}
                 title={list.title}
                 username={list.username}
