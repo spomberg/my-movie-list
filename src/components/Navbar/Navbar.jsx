@@ -26,7 +26,7 @@ export default function Navbar(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    Promise.resolve(axiosConn.put('api/logout'))
+    Promise.resolve(axiosConn.get('api/logout'))
     .then((res) => {
       if (res.status === 204) {
         props.setUsername('');
