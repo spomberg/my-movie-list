@@ -1,0 +1,12 @@
+.my-lists {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 7%;
+
+  .loader {
+    position: fixed;
+    top:55%;
+    left: 50%;
+  }
+}
