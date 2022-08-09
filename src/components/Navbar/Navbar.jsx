@@ -28,7 +28,7 @@ export default function Navbar(props) {
     event.preventDefault();
     Promise.resolve(axiosConn.get('api/logout'))
     .then((res) => {
-      if (res.status === 204) {
+      if (res.data.code === 200) {
         props.setUsername('');
         enqueueSnackbar('You logged out!', { variant: 'success' });
         navigate('/');
