@@ -17,4 +17,8 @@ function isDuplicate(list, movieID) {
   return false;
 }
 
-module.exports = { moveElement, isDuplicate };
+function removeMovie(list, movieID) {
+  return list.filter(movie => movie.id !== movieID)
+}
+
+module.exports = { moveElement, isDuplicate, removeMovie };
