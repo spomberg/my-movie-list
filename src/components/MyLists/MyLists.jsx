@@ -2,6 +2,8 @@ import './MyLists.scss';
 import ListItem from '../Home/ListItem';
 import Typography from '@mui/material/Typography';
 import axiosConn from '../../axiosConn';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { BeatLoader } from 'react-spinners';
 import { useEffect, useState } from 'react';
 import { useSnackbar } from 'notistack';
@@ -43,6 +45,16 @@ export default function MyLists() {
                   username={list.username}
                   image={list.index_poster}
                 />
+                <div className='list-buttons'>
+                  <button>
+                    <EditIcon 
+                      onClick={() => navigate(`/lists/edit/${list.id}`)} 
+                    />
+                  </button>
+                  <button>
+                    <DeleteIcon />
+                  </button>
+                </div>
               </li>
             )
           })}
