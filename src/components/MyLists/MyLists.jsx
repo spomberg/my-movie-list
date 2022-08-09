@@ -26,12 +26,28 @@ export default function MyLists() {
       }
     })
     .catch((err) => enqueueSnackbar(err.message, { variant: 'error' }))
-  }, [enqueueSnackbar])
+  }, [enqueueSnackbar, navigate])
 
   return (
     <div className='my-lists'>
       {loading ? (<BeatLoader className='loader' loading={loading} />) : (
       <Typography className='page-title' variant="h4">My Lists</Typography>)}
+      <div className='my-lists-wrapper'>
+        <ul>
+          {lists.map(list => {
+            return(
+              <li key={list.id}>
+                <ListItem 
+                  id={list.id}
+                  title={list.title}
+                  username={list.username}
+                  image={list.index_poster}
+                />
+              </li>
+            )
+          })}
+        </ul>
+      </div>
     </div>
   )
 }
