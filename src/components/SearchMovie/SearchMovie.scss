@@ -26,27 +26,31 @@
     }
   }
 
-  .MuiBox-root.css-12zvdn5 {
-    background-color: white;
-    margin-top: 2.5%;
-    height: 55vh;
-    overflow: auto;
-    
-    ul {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      padding: 0;
-      margin-left: 6%;
-      margin-top: 5%;
+  .MuiContainer-root {
+    height: 100%;
 
-      li {
-        list-style: none;
-        margin-right: 4.5%;
-        margin-bottom: 3%;
-        width: 20%;
+    .MuiBox-root.css-12zvdn5 {
+      background-color: white;
+      margin-top: 5%;
+      height: 90%;
+      overflow: auto;
+      
+      ul {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 0;
+        margin-left: 6%;
+        margin-top: 5%;
+  
+        li {
+          list-style: none;
+          margin-right: 4.5%;
+          margin-bottom: 3%;
+          width: 20%;
+        }
       }
     }
-    
   }
+
 }
