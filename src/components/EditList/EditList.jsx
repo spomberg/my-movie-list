@@ -212,14 +212,17 @@ export default function EditList() {
               )
             })}
           </ul>
-          <Fab 
-            className='add-icon' 
-            onClick={handleOpen} 
-            color="primary" 
-            aria-label="add"
-          >
-            <AddIcon />
-          </Fab>
+          <div className='add-section'>
+            <Typography className='page-title' variant="subtitle1">Add Movies</Typography>
+            <Fab 
+              className='add-icon' 
+              onClick={handleOpen} 
+              color="primary" 
+              aria-label="add"
+            >
+              <AddIcon />
+            </Fab>
+          </div>
           <SearchMovie 
             open={open}
             handleClose={handleClose}
