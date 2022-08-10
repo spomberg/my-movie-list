@@ -51,11 +51,19 @@
     flex-direction: column;
     align-self: center;
   }
-  
-  .add-icon {
+
+  .add-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     position: fixed;
     bottom: 3%;
-    right: 5%;    
+    right: 5%; 
+    
+    .add-icon {
+      margin-top: 2%;
+    }
   }
+  
 
 }
