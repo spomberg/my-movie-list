@@ -22,6 +22,11 @@
       .index-list-item {
         margin-right: 2%;
       }
+
+      .list-buttons {
+        display: flex;
+        flex-direction: column;
+      }
       
       button {
         background-color: white;
