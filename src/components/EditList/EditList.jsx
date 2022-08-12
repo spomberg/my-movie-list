@@ -175,7 +175,7 @@ export default function EditList() {
               UPDATE LIST
             </Button>
           </Box>
-          <div className='add-section-top'>
+          <div className='add-movies-section'>
             <Fab 
               className='add-icon' 
               onClick={handleOpen} 
