@@ -175,6 +175,17 @@ export default function EditList() {
               UPDATE LIST
             </Button>
           </Box>
+          <div className='add-section-top'>
+            <Fab 
+              className='add-icon' 
+              onClick={handleOpen} 
+              color="primary" 
+              aria-label="add"
+            >
+              <AddIcon />
+            </Fab>
+            <Typography className='page-title' variant="subtitle1">Add Movies</Typography>
+          </div>
           <ul>
             {movies.map((movie, index) => {
               return (
@@ -212,17 +223,6 @@ export default function EditList() {
               )
             })}
           </ul>
-          <div className='add-section'>
-            <Typography className='page-title' variant="subtitle1">Add Movies</Typography>
-            <Fab 
-              className='add-icon' 
-              onClick={handleOpen} 
-              color="primary" 
-              aria-label="add"
-            >
-              <AddIcon />
-            </Fab>
-          </div>
           <SearchMovie 
             open={open}
             handleClose={handleClose}
