@@ -47,18 +47,19 @@ export default function SearchMovie(props) {
   }
 
   const handleAdd = (movieID) => {
-    !isDuplicate(props.movies, movieID) ?
-    (Promise.resolve((axiosConn.put(`api/list/${params.listId}/edit`, { add_movie: movieID })))
-    .then((res) => {
-      if (res.data.code === 200) {
-        enqueueSnackbar('Movie added', { variant: 'success' });
-        navigate(`/lists/edit/${params.listId}`);
+      if (!isDuplicate(props.movies, movieID)) {
+        enqueueSnackbar('Adding movie...', { variant: 'info' })
+        Promise.resolve(axiosConn.put(`api/list/${params.listId}/edit`, { add_movie: movieID }))
+        .then((res) => {
+          if (res.data.code === 200) {
+            enqueueSnackbar('Movie added', { variant: 'success' });
+            navigate(`/lists/edit/${params.listId}`);
+          }
+          else enqueueSnackbar(res.data.message, { variant: 'error' });
+        })
+        .catch((err) => enqueueSnackbar(err.message, { variant: 'error' }))
       }
-      else enqueueSnackbar(res.data.message, { variant: 'error' });
-    })
-    .catch((err) => enqueueSnackbar(err.message, { variant: 'error' }))) : (
-      enqueueSnackbar('This movie is already on your list!', { variant: 'warning' })
-    )
+      else enqueueSnackbar('This movie is already on your list!', { variant: 'warning' });
   }
 
   return (
