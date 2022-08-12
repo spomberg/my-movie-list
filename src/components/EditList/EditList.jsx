@@ -202,13 +202,13 @@ export default function EditList() {
                   />
                   <div className='list-buttons'>
                     <button
-                      {...index === 0 ? { disabled: true } : {} }
+                      {...index === 0 && { disabled: true } }
                       onClick={() => handleMove('up', index)}
                       >
                       <KeyboardArrowUpIcon />
                     </button>
                     <button
-                      {...index >= movies.length - 1 ? { disabled: true } : {} }
+                      {...index >= movies.length - 1 && { disabled: true } }
                       onClick={() => handleMove('down', index)}
                       >
                       <KeyboardArrowDownIcon />
