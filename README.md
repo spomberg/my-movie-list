@@ -2,7 +2,9 @@
 
 Currently deployed and hosted at [mymovielist.ca](https://mymovielist.ca).
 
-Full-stack app for users to create, edit and share movie lists with their friends. Built with React, Ruby on Rails, MongoDB and the [TMDB API](https://developers.themoviedb.org/3/getting-started/introduction). This app allows users to:
+Full-stack app for users to create, edit and share movie lists with their friends. Built with React, Ruby on Rails, MongoDB and the [TMDB API](https://developers.themoviedb.org/3/getting-started/introduction). Tested with Jest and Storybook.
+
+This app allows users to:
 
 - Create accounts
 - Create public and private Movie Lists
