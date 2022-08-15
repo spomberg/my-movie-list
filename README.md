@@ -16,6 +16,8 @@ This app allows users to:
 
 This is a frontend app that is meant to be used with conjunction with an [API](https://github.com/spomberg/my-movie-list-api).
 
+![Usage GIF](https://github.com/spomberg/my-movie-list/blob/main/src/assets/ezgif-1-eb722a5992.gif?raw=true)
+
 ## Dependencies
 
 - Axios
@@ -29,8 +31,6 @@ This is a frontend app that is meant to be used with conjunction with an [API](h
 - Validator
 - Jest
 - Storybook
-
-![Usage GIF](https://github.com/spomberg/my-movie-list/blob/main/src/assets/ezgif-1-eb722a5992.gif?raw=true)
 
 ## Instructions
 
