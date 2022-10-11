@@ -56,7 +56,7 @@ export default function List() {
             >
               <span>Share list <ContentCopyIcon /></span>
             </CopyToClipboard>
-            {value ? <span style={{color: 'red'}}>Copied</span> : null}
+            {value && (<span style={{color: 'red'}}>Copied</span>)}
           </div>
           <ul>
             {list.movies.map(movie => {
