@@ -40,3 +40,13 @@ This is a frontend app that is meant to be used with conjunction with an [API](h
 - Copy the `.env.example` file and rename it to `.env`.
 - Change the `REACT_APP_API_URL` env variable to the API localhost URL and `REACT_APP_BASE_URL_LOCAL` to the frontend URL.
 - Run `npm start` to start the app.
+
+## Author
+
+- Portfolio - [spomberg.com](https://spomberg.com)
+- LinkedIn - [/marcos-spomberg](https://www.linkedin.com/in/marcos-spomberg/)
+
+### Other projects
+
+- My Movie List - [Site](https://mymovielist.ca) / [Repo](https://github.com/spomberg/my-movie-list)
+- Password Generator App - [Site](https://password-generator.spomberg.com) / [Repo](https://github.com/spomberg/password-generator-app)
