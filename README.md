@@ -8,10 +8,8 @@ Currently deployed and hosted at [mymovielist.ca](https://mymovielist.ca).
 
 - [Overview](#overview)
 - [Built with](#built-with)
-  - [Dependencies](#dependencies)
--[Instructions](#instructions)
--[Author](#author)
-  - [Other projects](#other-projects)
+- [Instructions](#instructions)
+- [Author](#author)
 
 ## Overview
 
