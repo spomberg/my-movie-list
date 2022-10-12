@@ -1,8 +1,19 @@
 # My Movie List (Frontend)
 
+Full-stack app for users to create, edit and share movie lists with their friends. Built with React, Ruby on Rails, MongoDB and the [TMDB API](https://developers.themoviedb.org/3/getting-started/introduction). Tested with Jest and Storybook.
+
 Currently deployed and hosted at [mymovielist.ca](https://mymovielist.ca).
 
-Full-stack app for users to create, edit and share movie lists with their friends. Built with React, Ruby on Rails, MongoDB and the [TMDB API](https://developers.themoviedb.org/3/getting-started/introduction). Tested with Jest and Storybook.
+## Table of contents
+
+- [Overview](#overview)
+- [Built with](#built-with)
+  - [Dependencies](#dependencies)
+-[Instructions](#instructions)
+-[Author](#author)
+  - [Other projects](#other-projects)
+
+## Overview
 
 This app allows users to:
 
@@ -10,7 +21,7 @@ This app allows users to:
 - Create public and private Movie Lists
 - View the 20 most recent lists created
 - View their personal movie lists
-- Edit lists (add and remove movies and reorder them)
+- Edit lists (add, remove movies, and reorder them)
 - Delete lists
 - Share public lists with other users
 
@@ -18,7 +29,13 @@ This is a frontend app that is meant to be used with conjunction with an [API](h
 
 ![Usage GIF](https://github.com/spomberg/my-movie-list/blob/main/src/assets/ezgif-1-eb722a5992.gif?raw=true)
 
-## Dependencies
+## Built with
+
+- React
+- Ruby on Rails
+- MongoDB
+
+### Dependencies
 
 - Axios
 - Sass
