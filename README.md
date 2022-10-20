@@ -29,6 +29,22 @@ This is a frontend app that is meant to be used with conjunction with an [API](h
 
 ![Usage GIF](https://github.com/spomberg/my-movie-list/blob/main/src/assets/ezgif-1-eb722a5992.gif?raw=true)
 
+Main Page
+
+<img src="https://github.com/spomberg/my-movie-list/blob/main/src/assets/home_screen.png?raw=true" width="550" height="300" />
+
+List Page
+
+<img src="https://github.com/spomberg/my-movie-list/blob/main/src/assets/list_screen.png?raw=true" width="550" height="300" />
+
+Edit List Page
+
+<img src="https://github.com/spomberg/my-movie-list/blob/main/src/assets/edit_screen.png?raw=true" width="550" height="450" />
+
+Add Movie Page
+
+<img src="https://github.com/spomberg/my-movie-list/blob/main/src/assets/add_movie.png?raw=true" width="550" height="300" />
+
 ### The Challenge
 
 This was my first solo full-stack project out of bootcamp, the challenge was planning and creating all aspects of the project with no external help aside from Google. 
