@@ -8,6 +8,7 @@ Currently deployed and hosted at [mymovielist.ca](https://mymovielist.ca).
 
 - [Overview](#overview)
   - [The Challenge](#the-challenge)
+- [Screenshots](#screenshots)
 - [Built with](#built-with)
 - [Instructions](#instructions)
 - [Author](#author)
@@ -27,23 +28,25 @@ This app allows users to:
 
 This is a frontend app that is meant to be used with conjunction with an [API](https://github.com/spomberg/my-movie-list-api).
 
+## Screenshots
+
 ![Usage GIF](https://github.com/spomberg/my-movie-list/blob/main/src/assets/ezgif-1-eb722a5992.gif?raw=true)
 
 Main Page
 
-<img src="https://github.com/spomberg/my-movie-list/blob/main/src/assets/home_screen.png?raw=true" width="550" height="300" />
+![Main Page](https://github.com/spomberg/my-movie-list/blob/main/src/assets/home_screen.png?raw=true)
 
 List Page
 
-<img src="https://github.com/spomberg/my-movie-list/blob/main/src/assets/list_screen.png?raw=true" width="550" height="300" />
+![List Page](https://github.com/spomberg/my-movie-list/blob/main/src/assets/list_screen.png?raw=true)
 
 Edit List Page
 
-<img src="https://github.com/spomberg/my-movie-list/blob/main/src/assets/edit_screen.png?raw=true" width="550" height="450" />
+![Edit List Page](https://github.com/spomberg/my-movie-list/blob/main/src/assets/edit_screen.png?raw=true)
 
 Add Movie Page
 
-<img src="https://github.com/spomberg/my-movie-list/blob/main/src/assets/add_movie.png?raw=true" width="550" height="300" />
+![Add Movie Page](https://github.com/spomberg/my-movie-list/blob/main/src/assets/add_movie.png?raw=true)
 
 ### The Challenge
 
