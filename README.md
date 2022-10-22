@@ -8,7 +8,7 @@ Currently deployed and hosted at [mymovielist.ca](https://mymovielist.ca).
 
 - [Overview](#overview)
   - [The Challenge](#the-challenge)
-- [Screenshots](#screenshots)
+  - [Screenshots](#screenshots)
 - [Built with](#built-with)
 - [Instructions](#instructions)
 - [Author](#author)
