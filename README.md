@@ -34,7 +34,7 @@ This is a frontend app that is meant to be used with conjunction with an [API](h
 
 This was my first solo full-stack project out of bootcamp, the challenge was planning and creating a CRUD web application with no external help aside from Google and documentation. 
 
-I chose to create a movie lists application after I learned about the TMDB API and since I'm a nerd who loves films I thought this would be something fun to work on (luckily, I was right). The first challenge was reading the API's documentation to learn how I could leverage it to achieve my goals.
+I chose to create a movie lists application after I learned about the [TMDB API](https://developers.themoviedb.org/3/getting-started/introduction) and since I'm a nerd who loves films I thought this would be something fun to work on (luckily, I was right). The first challenge was reading the API's documentation to learn how I could leverage it to achieve my goals.
 
 The next steps were designing the wireframes and the the database, as another learning opportunity I decided to use a NoSQL database (MongoDB) for the first time. 
 
@@ -79,6 +79,12 @@ Add Movie Page
 - Validator
 - Jest
 - Storybook
+
+## What I learned
+
+### Work with external APIs
+
+While I had used external APIs before, I had never worked on a project of this scope that was so reliant on one. I spent a significant amount of time reading the API's documentation just to learn what I could and couldn't do with it and how I could use it to achieve my goals before I wrote a single line of code. Now I feel confident that in the future I will be able to get familiarized with new APIs in no time. 
 
 ## Instructions
 
