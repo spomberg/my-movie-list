@@ -13,6 +13,7 @@ Currently deployed and hosted at [mymovielist.ca](https://mymovielist.ca).
 - [What I learned](#what-i-learned)
   - [Work with external APIs](#work-with-external-apis)
   - [Research documentation](#research-documentation)
+  - [NoSQL](#nosql)
 - [Instructions](#instructions)
 - [Author](#author)
   - [Other Projects](#other-projects)
