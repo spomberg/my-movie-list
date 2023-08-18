@@ -55,7 +55,7 @@ function App() {
         </Routes>
       </SnackbarProvider>
     </div>
-  );
+  )
 }
 
 export default App;
